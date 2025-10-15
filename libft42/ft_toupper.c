@@ -16,13 +16,3 @@ int	ft_toupper(int c)
 		c -= 32;
 	return (c);
 }
-
-#include <stdio.h>
-int	main(int ac, char **av)
-{
-	if (ac > 1)
-	{
-		printf("%d\n", ft_toupper(av[1][0]));
-	}
-	return (0);
-}

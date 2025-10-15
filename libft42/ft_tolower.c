@@ -16,13 +16,3 @@ int	ft_tolower(int c)
 		c += 32;
 	return (c);
 }
-
-#include <stdio.h>
-int	main(int ac, char **av)
-{
-	if (ac > 1)
-	{
-		printf("%d\n", ft_tolower(av[1][0]));
-	}
-	return (0);
-}
