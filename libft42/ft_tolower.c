@@ -1,18 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aprivalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/15 14:38:15 by aprivalo          #+#    #+#             */
-/*   Updated: 2025/10/15 14:38:20 by aprivalo         ###   ########.fr       */
+/*   Created: 2025/10/15 15:07:50 by aprivalo          #+#    #+#             */
+/*   Updated: 2025/10/15 15:38:28 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isalpha(int c)
+int	ft_tolower(int c)
 {
-	if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))
-		return (1);
+	if (c >= 'A' && c <= 'Z')
+		c += 32;
+	return (c);
+}
+
+#include <stdio.h>
+int	main(int ac, char **av)
+{
+	if (ac > 1)
+	{
+		printf("%d\n", ft_tolower(av[1][0]));
+	}
 	return (0);
 }

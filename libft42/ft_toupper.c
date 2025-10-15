@@ -1,18 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kali <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: aprivalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/14 17:54:51 by kali              #+#    #+#             */
-/*   Updated: 2025/10/14 17:54:57 by kali             ###   ########.fr       */
+/*   Created: 2025/10/15 15:07:50 by aprivalo          #+#    #+#             */
+/*   Updated: 2025/10/15 15:14:08 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isalpha(int c)
+int	ft_toupper(int c)
 {
-	if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))
-		return (1);
+	if (c >= 'a' && c <= 'z')
+		c -= 32;
+	return (c);
+}
+
+#include <stdio.h>
+int	main(int ac, char **av)
+{
+	if (ac > 1)
+	{
+		printf("%d\n", ft_toupper(av[1][0]));
+	}
 	return (0);
 }

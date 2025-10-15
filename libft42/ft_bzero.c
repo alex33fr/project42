@@ -3,15 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kali <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: aprivalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/14 17:56:57 by kali              #+#    #+#             */
-/*   Updated: 2025/10/14 22:15:25 by kali             ###   ########.fr       */
+/*   Created: 2025/10/15 14:37:50 by aprivalo          #+#    #+#             */
+/*   Updated: 2025/10/15 15:56:30 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stddef.h>
 
 void	ft_bzero(void *s, size_t n)
 {
+	size_t	i;
+	unsigned char *p;
+	p = (unsigned char *)s;
 	
+	i = 0;
+	while (i < n)
+	{
+		p[i] = 0;
+		i++;
+	}
 }
