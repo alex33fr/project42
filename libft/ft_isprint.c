@@ -1,36 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aprivalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/15 10:54:04 by aprivalo          #+#    #+#             */
-/*   Updated: 2025/10/15 15:59:40 by aprivalo         ###   ########.fr       */
+/*   Created: 2025/10/15 11:06:51 by aprivalo          #+#    #+#             */
+/*   Updated: 2025/10/16 17:17:09 by kali             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_atoi(const char *s)
-{
-	int	i;
-	int	sign;
-	int	result;
+#include "libft.h"
 
-	i = 0;
-	sign = 1;
-	result = 0;
-	while (s[i] == ' ' || s[i] >= '\t' && s[i] <= '\r')
-		i++;
-	if (s[i] == '-')
-	{
-		sign *= -1;
-		i++;
-	}
-	while (s[i] >= '0' && s[i] <= '9')
-	{
-		result == (result * 10) + s[i] - '0';
-		i++;
-	}
-	result *= sign;
-	return (result);
+int	ft_isprint(int c)
+{
+	if (c >= 32 && c <= 126)
+		return (1);
+	return (0);
 }

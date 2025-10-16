@@ -1,18 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tolower.c                                       :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aprivalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/15 15:07:50 by aprivalo          #+#    #+#             */
-/*   Updated: 2025/10/15 15:38:28 by aprivalo         ###   ########.fr       */
+/*   Created: 2025/10/15 10:54:04 by aprivalo          #+#    #+#             */
+/*   Updated: 2025/10/16 17:15:22 by kali             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_tolower(int c)
+#include "libft.h"
+
+int	ft_atoi(const char *s)
 {
-	if (c >= 'A' && c <= 'Z')
-		c += 32;
-	return (c);
+	int	i;
+	int	sign;
+	int	result;
+
+	i = 0;
+	sign = 1;
+	result = 0;
+	while ((s[i] >= '\t' && s[i] <= '\r') || s[i] == ' ')
+		i++;
+	if (s[i] == '-' || s[i] == '+')
+	{
+		if (s[i] == '-')
+			sign = -1;
+		i++;
+	}
+	while (s[i] >= '0' && s[i] <= '9')
+	{
+		result = (result * 10) + s[i] - '0';
+		i++;
+	}
+	result *= sign;
+	return (result);
 }
