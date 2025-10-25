@@ -27,6 +27,7 @@ SRCS    = ft_isalpha.c \
 	ft_strdup.c \
 	ft_substr.c \
 	ft_strjoin.c \
+	ft_strtrim.c \
 
 OBJS    = $(SRCS:%.c=%.o)
 HEADER	= -Ilibft.h
