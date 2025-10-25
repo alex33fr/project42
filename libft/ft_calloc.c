@@ -6,7 +6,7 @@
 /*   By: aprivalo <aprivalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/21 16:48:50 by aprivalo          #+#    #+#             */
-/*   Updated: 2025/10/23 15:28:20 by aprivalo         ###   ########.fr       */
+/*   Updated: 2025/10/25 14:29:34 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	size_t	t;
 
 	t = size * nmemb;
-	if (nmemb && size && t < nmemb)
-		return (NULL);
 	tab = malloc(t);
 	if (!tab)
 		return (NULL);

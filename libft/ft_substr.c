@@ -6,7 +6,7 @@
 /*   By: aprivalo <aprivalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 10:47:14 by aprivalo          #+#    #+#             */
-/*   Updated: 2025/10/23 15:16:58 by aprivalo         ###   ########.fr       */
+/*   Updated: 2025/10/25 14:21:11 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,14 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	char	*tab_substr;
 	size_t	i;
 	size_t	s_len;
-	
+
 	i = 0;
-	tab_substr = NULL;
 	if (!s)
 		return (NULL);
 	s_len = ft_strlen(s);
 	if (start >= s_len)
 	{
 		tab_substr = ft_calloc(1, 1);
-		if (!tab_substr)
-			return (NULL);
 		return (tab_substr);
 	}
 	if (len > s_len - start)
