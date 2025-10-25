@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aprivalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/15 14:37:50 by aprivalo          #+#    #+#             */
-/*   Updated: 2025/10/20 10:43:41 by aprivalo         ###   ########.fr       */
+/*   Created: 2025/10/20 10:46:32 by aprivalo          #+#    #+#             */
+/*   Updated: 2025/10/20 10:47:46 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
+char	*ft_strdup(const char *s)
 {
-	size_t			i;
-	unsigned char	*p;
+	char	*tab_dup;
+	int		size;
 
-	i = 0;
-	p = (unsigned char *)s;
-	while (i < n)
-	{
-		p[i] = 0;
-		i++;
-	}
+	size = ft_strlen(s);
+	tab_dup = malloc(sizeof(char) * (size + 1));
+	if (!tab_dup)
+		return (NULL);
+	ft_strlcpy(tab_dup, s, size + 1);
+	return (tab_dup);
 }
