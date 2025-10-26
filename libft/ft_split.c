@@ -6,7 +6,7 @@
 /*   By: aprivalo <aprivalo@student.42angouleme.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/25 18:16:19 by aprivalo          #+#    #+#             */
-/*   Updated: 2025/10/26 11:19:09 by aprivalo         ###   ########.fr       */
+/*   Updated: 2025/10/26 17:49:18 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,20 @@ int	ft_count_word(char const *s, char c)
 	return (j);
 }
 
-static void	ft_input_split(char **tab_split, char const *s, char c)
+void	ft_free_tab(char **tab)
+{
+	size_t	i;
+
+	i = 0;
+	while (tab[i])
+	{
+		free(tab[i]);
+		i++;
+	}
+	free(tab);
+}
+
+static char	**ft_input_split(char **tab_split, char const *s, char c)
 {
 	size_t	i;
 	size_t	t;
@@ -43,30 +56,37 @@ static void	ft_input_split(char **tab_split, char const *s, char c)
 	t = 0;
 	while (s[i])
 	{
-		if (s[i] == c)
+		while (s[i] == c)
 			i++;
-		else
+		if (!s[i])
+			break ;
+		start = i;
+		while (s[i] && s[i] != c)
+			i++;
+		tab_split[t] = ft_substr(s, start, i - start);
+		if (!tab_split[t])
 		{
-			start = i;
-			while (s[i] != c && s[i])
-				i++;
-			tab_split[t] = ft_substr(s, start, i - start);
-			t++;
+			ft_free_tab(tab_split);
+			return (NULL);
 		}
+		t++;
 	}
+	tab_split[t] = NULL;
+	return (tab_split);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	char	**tab_split;
+	char	**tab;
+	char	**tab_splited;
 	size_t	nb_words;
 
 	if (!s)
 		return (NULL);
 	nb_words = ft_count_word(s, c);
-	tab_split = ft_calloc(nb_words + 1, sizeof(char *));
-	if (!tab_split)
+	tab = ft_calloc(nb_words + 1, sizeof(char *));
+	if (!tab)
 		return (NULL);
-	ft_input_split(tab_split, s, c);
-	return (tab_split);
+	tab_splited = ft_input_split(tab, s, c);
+	return (tab_splited);
 }
