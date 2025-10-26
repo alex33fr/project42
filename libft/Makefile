@@ -35,10 +35,10 @@ SRCS    = ft_isalpha.c \
 	ft_putchar_fd.c \
 	ft_putstr_fd.c \
 	ft_putendl_fd.c \
-	ft_putnbr_fd.c \
+	ft_putnbr_fd.c
 
-OBJS    = $(SRCS:%.c=%.o)
-HEADER	= -Ilibft.h
+OBJS        = $(SRCS:.c=.o)
+HEADER      = -Ilibft.h
 
 all: $(NAME)
 
@@ -46,14 +46,14 @@ all: $(NAME)
 	$(CC) $(CFLAGS) -o $@ -c $^
 
 $(NAME): $(OBJS)
-	ar	rcs	$(NAME)	$(OBJS)
+	ar rcs $(NAME) $(OBJS)
 
 clean:
 	rm -f $(OBJS)
 
-fclean:	clean
+fclean: clean
 	rm -f $(NAME)
 
-re:	fclean	$(NAME)
+re: fclean all
 
 .PHONY:	all	clean	fclean	re
