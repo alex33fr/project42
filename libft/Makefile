@@ -1,5 +1,8 @@
 CC      = cc
-CFLAGS  = -Wall -Wextra -Werror
+
+CFLAGS  = -Wall -Wextra -Werror -I.
+
+AR	= ar rcs
 
 NAME	= libft.a
 SRCS    = ft_isalpha.c \
@@ -35,18 +38,17 @@ SRCS    = ft_isalpha.c \
 	ft_putchar_fd.c \
 	ft_putstr_fd.c \
 	ft_putendl_fd.c \
-	ft_putnbr_fd.c
+	ft_putnbr_fd.c \
 
-OBJS        = $(SRCS:.c=.o)
-HEADER      = -Ilibft.h
+OBJS        = $(SRCS:%.c=%.o)
 
 all: $(NAME)
 
-%.o: %.c
-	$(CC) $(CFLAGS) -o $@ -c $^
-
 $(NAME): $(OBJS)
-	ar rcs $(NAME) $(OBJS)
+	$(AR) $(NAME) $(OBJS)
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c $^ -o $@
 
 clean:
 	rm -f $(OBJS)

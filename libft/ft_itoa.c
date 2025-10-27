@@ -6,13 +6,13 @@
 /*   By: aprivalo <aprivalo@student.42angouleme.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 17:58:20 by aprivalo          #+#    #+#             */
-/*   Updated: 2025/10/26 19:50:00 by aprivalo         ###   ########.fr       */
+/*   Updated: 2025/10/27 07:28:54 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_int_len(int n)
+static int	ft_int_len(int n)
 {
 	int	i;
 
@@ -27,7 +27,7 @@ int	ft_int_len(int n)
 	return (i);
 }
 
-static int	ft_itoa_init(long *nb, long *sign, char **tab_itoa)
+static int	ft_init(long *nb, long *sign, char **tab_itoa)
 {
 	if (*nb == 0)
 	{
@@ -55,7 +55,7 @@ char	*ft_itoa(int n)
 
 	nb = (long)n;
 	sign = 0;
-	state = ft_itoa_init(&nb, &sign, &tab_itoa);
+	state = ft_init(&nb, &sign, &tab_itoa);
 	if (state == -1)
 		return (NULL);
 	if (state == 1)

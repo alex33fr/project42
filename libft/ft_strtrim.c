@@ -6,7 +6,7 @@
 /*   By: aprivalo <aprivalo@student.42angouleme.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/25 17:43:48 by aprivalo          #+#    #+#             */
-/*   Updated: 2025/10/25 18:14:41 by aprivalo         ###   ########.fr       */
+/*   Updated: 2025/10/27 07:41:39 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	size_t	end;
 	size_t	i;
 
+	if (!s1 || !set)
+		return (NULL);
 	start = ft_start_s1(s1, set);
 	end = ft_end_s1(s1, set, start);
 	i = 0;

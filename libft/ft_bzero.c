@@ -6,7 +6,7 @@
 /*   By: aprivalo <aprivalo@student.42angouleme.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/25 14:37:16 by aprivalo          #+#    #+#             */
-/*   Updated: 2025/10/25 14:37:18 by aprivalo         ###   ########.fr       */
+/*   Updated: 2025/10/27 07:25:44 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_bzero(void *s, size_t n)
 	p = (unsigned char *)s;
 	while (i < n)
 	{
-		p[i] = 0;
+		p[i] = (unsigned char)0;
 		i++;
 	}
 }

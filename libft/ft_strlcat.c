@@ -6,7 +6,7 @@
 /*   By: aprivalo <aprivalo@student.42angouleme.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/25 14:36:39 by aprivalo          #+#    #+#             */
-/*   Updated: 2025/10/25 14:36:42 by aprivalo         ###   ########.fr       */
+/*   Updated: 2025/10/27 07:39:36 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 
 	i = 0;
 	len_src = ft_strlen(src);
+	if (!dst && size == 0)
+		return (len_src);
 	len_dest = ft_strlen(dst);
 	if (size == 0)
 		return (len_src);
