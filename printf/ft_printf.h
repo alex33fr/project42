@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aprivalo <aprivalo@student.42angouleme.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/27 18:49:22 by aprivalo          #+#    #+#             */
-/*   Updated: 2025/10/28 17:06:24 by aprivalo         ###   ########.fr       */
+/*   Created: 2025/10/28 12:15:33 by aprivalo          #+#    #+#             */
+/*   Updated: 2025/10/28 15:07:39 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
+# include <stdarg.h>
+# include "../libft/libft.h"
 
-int	ft_printf(const char *s, ...)
-{
-	int	i;
+int	ft_printf(const char *s, ...);
 
-	i = s[0];
-	return (i);
-}
+#endif
