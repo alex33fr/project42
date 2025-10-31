@@ -6,7 +6,7 @@
 /*   By: aprivalo <aprivalo@student.42angouleme.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 11:51:19 by aprivalo          #+#    #+#             */
-/*   Updated: 2025/10/28 17:20:11 by aprivalo         ###   ########.fr       */
+/*   Updated: 2025/10/29 07:24:06 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,3 @@ static char	*ft_memory_key(const char *s)
 	}
 	return (tab_of_types);
 }
-
-int	main()
-{
-	char *tab = "Bonjour! %s, Comment tu va %s ? Ton age est: %d";
-	ft_memory_key(tab);
-	return (0);
-}
-
-
