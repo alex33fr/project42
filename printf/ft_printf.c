@@ -6,7 +6,7 @@
 /*   By: aprivalo <aprivalo@student.42angouleme.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 18:49:22 by aprivalo          #+#    #+#             */
-/*   Updated: 2025/10/31 17:58:01 by aprivalo         ###   ########.fr       */
+/*   Updated: 2025/10/31 19:52:22 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,40 +27,41 @@ void	ft_putstr_fd(char *s, int fd)
 	}
 }
 
-static int	ft_vsnprintf(char *tab_p, size_t size, const char *s, va_list args)
+static int	ft_print(char *tab_p, const char *s, va_list args)
 {
 	size_t	i;
 	char	*str;
 
 	i = 0;
-	while (*s && i + 1 < size)
+	while (*s)
 	{
 		if (*s == '%' && *(s + 1) == 's')
 		{
+			s += 2;
 			str = va_arg(args, char *);
-			ft_putstr_fd(str, 1);
+			while (*str)
+				tab_p[i++] = *str++;
 		}
 		else
-	tab_p[i++] = *s++;
+			tab_p[i++] = *s++;
 	}
-	tab_p[i] = '\0';
 	return (i);
 }
 
 int	ft_printf(const char *s, ...)
 {
 	int	n;
-	size_t	size;
 	char	*tab_p;
-	va_list	ap;
+	va_list	args;
+	size_t	size;
 
-	size = 1024;
-	tab_p = malloc(size);
+	size = 5000;
+	tab_p = calloc(size, sizeof(char));
 	if (!tab_p)
 		return (-1);
-	va_start(ap, s);
-	n = ft_vsnprintf(tab_p, size, s, ap);
-	va_end(ap);
+	va_start(args, s);
+	n = ft_print(tab_p, s, args);
+	va_end(args);
 	write(1, tab_p, n);
 	free(tab_p);
     return (n);
