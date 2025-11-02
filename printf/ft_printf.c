@@ -6,7 +6,7 @@
 /*   By: aprivalo <aprivalo@student.42angouleme.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 18:49:22 by aprivalo          #+#    #+#             */
-/*   Updated: 2025/11/02 18:35:23 by aprivalo         ###   ########.fr       */
+/*   Updated: 2025/11/02 23:16:54 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ static	int ft_type_args(char type, va_list args)
 		len = ft_print_string(args);
 	else if (type == 'd' || type == 'i')
 		len = ft_print_int (args);
+	else if (type == 'p')
+		len = ft_print_ptr(args);
 	return (len);
 }
 

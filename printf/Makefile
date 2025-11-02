@@ -1,6 +1,6 @@
 CC      = cc
 
-CFLAGS  = -Wall -Wextra -Werror -I.
+CFLAGS  = -Wall -Wextra -Werror -I. -Ilibft
 
 AR	= ar rcs
 
@@ -10,6 +10,7 @@ SRCS    = ft_printf.c \
 		tools/ft_print_char.c \
 		tools/ft_print_string.c \
 		tools/ft_print_int.c \
+		tools/ft_print_ptr.c \
 
 OBJS    = $(SRCS:%.c=%.o)
 
@@ -18,10 +19,12 @@ LIBFT = $(LIBFTDIR)/libft.a
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	$(MAKE) -C $(LIBFTDIR)
+$(NAME): $(LIBFT) $(OBJS)
 	cp $(LIBFT) $(NAME)
 	$(AR) $(NAME) $(OBJS)
+
+$(LIBFT):
+	$(MAKE) -C $(LIBFTDIR)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $^ -o $@
