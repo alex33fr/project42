@@ -6,7 +6,7 @@
 /*   By: aprivalo <aprivalo@student.42angouleme.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 18:49:22 by aprivalo          #+#    #+#             */
-/*   Updated: 2025/10/31 19:52:22 by aprivalo         ###   ########.fr       */
+/*   Updated: 2025/11/02 11:26:11 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	ft_printf(const char *s, ...)
 	va_list	args;
 	size_t	size;
 
-	size = 5000;
+	size = (size_t) - 1;
 	tab_p = calloc(size, sizeof(char));
 	if (!tab_p)
 		return (-1);
