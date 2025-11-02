@@ -7,6 +7,9 @@ AR	= ar rcs
 NAME	= libftprintf.a
 
 SRCS    = ft_printf.c \
+		tools/ft_print_char.c \
+		tools/ft_print_string.c \
+		tools/ft_print_int.c \
 
 OBJS    = $(SRCS:%.c=%.o)
 

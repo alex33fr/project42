@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_print_string.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aprivalo <aprivalo@student.42angouleme.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/28 12:15:33 by aprivalo          #+#    #+#             */
-/*   Updated: 2025/11/02 18:28:15 by aprivalo         ###   ########.fr       */
+/*   Created: 2025/11/02 17:30:04 by aprivalo          #+#    #+#             */
+/*   Updated: 2025/11/02 18:21:35 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
-# include <stdarg.h>
-# include "libft/libft.h"
+#include "ft_printf.h"
 
-int	ft_printf(const char *s, ...);
-int	ft_print_char(va_list args);
-int	ft_print_string(va_list args);
-int	ft_print_int(va_list args);
+int	ft_print_string(va_list args)
+{
+	char	*str;
+	int	len;
 
-#endif
+	str = va_arg(args, char *);
+	len = ft_strlen(str);
+	if (!str)
+		str = "(null)";
+	write(1, str, len);
+	return (len);
+}
