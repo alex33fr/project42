@@ -11,6 +11,10 @@ SRCS    = ft_printf.c \
 		tools/ft_print_string.c \
 		tools/ft_print_int.c \
 		tools/ft_print_ptr.c \
+		tools/ft_print_dec.c \
+		tools/ft_print_hex_lo.c \
+		tools/ft_print_hex_up.c \
+		tools/ft_print_percent.c \
 
 OBJS    = $(SRCS:%.c=%.o)
 

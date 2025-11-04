@@ -6,7 +6,7 @@
 /*   By: aprivalo <aprivalo@student.42angouleme.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/02 17:32:55 by aprivalo          #+#    #+#             */
-/*   Updated: 2025/11/02 18:32:53 by aprivalo         ###   ########.fr       */
+/*   Updated: 2025/11/04 11:25:04 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	ft_print_int(va_list args)
 {
-	int	asc;
-	int	len;
+	int		asc;
+	int		len;
 	char	*str;
 
 	asc = va_arg(args, int);

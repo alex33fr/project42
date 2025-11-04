@@ -1,26 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_string.c                                  :+:      :+:    :+:   */
+/*   ft_print_hex_up.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aprivalo <aprivalo@student.42angouleme.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/02 17:30:04 by aprivalo          #+#    #+#             */
-/*   Updated: 2025/11/04 11:26:40 by aprivalo         ###   ########.fr       */
+/*   Created: 2025/11/03 17:22:58 by aprivalo          #+#    #+#             */
+/*   Updated: 2025/11/04 11:27:01 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_print_string(va_list args)
+static unsigned int	ft_hex_calc(unsigned int nb)
 {
-	char	*str;
-	int		len;
+	unsigned int	i;
 
-	str = va_arg(args, char *);
-	if (!str)
-		str = "(null)";
-	len = ft_strlen(str);
-	write(1, str, len);
+	i = 0;
+	if (nb > 15)
+	{
+		i += ft_hex_calc(nb / 16);
+		i += ft_hex_calc(nb % 16);
+	}
+	else
+	{
+		ft_putchar_fd(BASE_HEX_UP[nb], 1);
+		i++;
+	}
+	return (i);
+}
+
+int	ft_print_hex_up(va_list args)
+{
+	unsigned int	len;
+	unsigned int	nb;
+
+	len = 0;
+	nb = va_arg(args, unsigned int);
+	len = ft_hex_calc(nb);
 	return (len);
 }
