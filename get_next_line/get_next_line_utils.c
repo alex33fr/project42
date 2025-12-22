@@ -6,38 +6,50 @@
 /*   By: aprivalo <aprivalo@student.42angouleme.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 12:11:44 by aprivalo          #+#    #+#             */
-/*   Updated: 2025/11/07 16:39:31 by aprivalo         ###   ########.fr       */
+/*   Updated: 2025/12/20 23:01:41 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-void	ft_bzero(void *s, size_t n)
+char	*ft_strchr(const char *s, int c)
 {
-	size_t			i;
-	unsigned char	*p;
+	char	cc;
+	char	*p;
 
-	i = 0;
-	p = (unsigned char *)s;
-	while (i < n)
+	cc = (char)c;
+	p = (char *)s;
+	while (*p)
 	{
-		p[i] = (unsigned char)0;
-		i++;
+		if (*p == cc)
+			return (p);
+		p++;
 	}
+	if (cc == '\0')
+		return (p);
+	return (NULL);
 }
 
 void	*ft_calloc(size_t nmemb, size_t size)
 {
-	char	*tab;
-	size_t	t;
+	unsigned char	*tab;
+	size_t			t;
+	size_t			i;
 
+	i = 0;
+	tab = NULL;
 	if (size != 0 && nmemb > ((size_t) - 1) / size)
 		return (NULL);
 	t = size * nmemb;
-	tab = malloc(t);
+	tab = malloc(sizeof(char) * (t + 1));
 	if (!tab)
 		return (NULL);
-	ft_bzero(tab, t);
+	while (i < t)
+	{
+		tab[i] = 0;
+		i++;
+	}
+	tab[i] = '\0';
 	return (tab);
 }
 
@@ -78,7 +90,7 @@ char	*ft_strdup(const char *s)
 	int		size;
 
 	size = ft_strlen(s);
-	tab_dup = malloc(sizeof(char) * (size + 1));
+	tab_dup = ft_calloc(size, sizeof(char));
 	if (!tab_dup)
 		return (NULL);
 	ft_strlcpy(tab_dup, s, size + 1);

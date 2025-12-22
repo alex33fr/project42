@@ -6,29 +6,11 @@
 /*   By: aprivalo <aprivalo@student.42angouleme.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 12:11:30 by aprivalo          #+#    #+#             */
-/*   Updated: 2025/11/07 16:39:56 by aprivalo         ###   ########.fr       */
+/*   Updated: 2025/12/20 23:39:38 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-char	*ft_strchr(const char *s, int c)
-{
-	char	cc;
-	char	*p;
-
-	cc = (char)c;
-	p = (char *)s;
-	while (*p)
-	{
-		if (*p == cc)
-			return (p);
-		p++;
-	}
-	if (cc == '\0')
-		return (p);
-	return (NULL);
-}
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
@@ -100,17 +82,75 @@ char	*ft_upd_rest(char *rest)
 	return (NULL);
 }
 
+char	*read_to_rest(int fd, char *rest)
+{
+	char	*buf;
+	ssize_t	rd;
+
+	buf = ft_calloc(BUFFER_SIZE + 1, 1);
+	if (!buf)
+		return (NULL);
+	rd = 1;
+	while (rd > 0 && (!rest || !ft_strchr(rest, '\n')))
+	{
+		rd = read(fd, buf, BUFFER_SIZE);
+		if (rd < 0)
+		{
+			free(buf);
+			return (NULL);
+		}
+		if (rd > 0)
+		{
+			buf[rd] = '\0';
+			rest = ft_strjoin(rest, buf);
+		}
+	}
+	free(buf);
+	return (rest);
+}
+
 char	*get_next_line(int fd)
 {
 	static char	*rest;
-	char		buf[BUFFER_SIZE + 1];
+	char		*tmp;
+	char		*line;
+
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (NULL);
+	tmp = read_to_rest(fd, rest);
+	if (!tmp)
+	{
+		free(rest);
+		rest = NULL;
+		return (NULL);
+	}
+	rest = tmp;
+	if (!*rest)
+	{
+		free(rest);
+		rest = NULL;
+		return (NULL);
+	}
+	line = ft_ret_line(rest);
+	rest = ft_upd_rest(rest);
+	return (line);
+}
+
+/*
+char	*get_next_line(int fd)
+{
+	static char	*rest;
+	char		*buf;
 	ssize_t		tab_read;
 	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	tab_read = 1;
-	while ((!rest || !ft_strchr(rest, '\n')) && tab_read > 0)
+	buf = ft_calloc(BUFFER_SIZE, sizeof(char));
+	if (!buf)
+		return (NULL);
+	tab_read = 0;
+	while (!rest || !ft_strchr(rest, '\n'))
 	{
 		tab_read = read(fd, buf, BUFFER_SIZE);
 		if (tab_read <= 0)
@@ -118,6 +158,7 @@ char	*get_next_line(int fd)
 		buf[tab_read] = '\0';
 		rest = ft_strjoin(rest, buf);
 	}
+	free(buf);
 	if (tab_read == -1 || !rest || !*rest)
 	{
 		free(rest);
@@ -128,3 +169,4 @@ char	*get_next_line(int fd)
 	rest = ft_upd_rest(rest);
 	return (line);
 }
+*/
