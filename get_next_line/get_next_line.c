@@ -6,7 +6,7 @@
 /*   By: aprivalo <aprivalo@student.42angouleme.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 12:11:30 by aprivalo          #+#    #+#             */
-/*   Updated: 2025/12/20 23:39:38 by aprivalo         ###   ########.fr       */
+/*   Updated: 2025/12/23 10:19:19 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,11 @@ static	char	*ft_ret_line(char *s)
 			break ;
 		i++;
 	}
-	str = ft_calloc(i + 2, sizeof(char));
+	str = ft_calloc(i + 1, sizeof(char));
+	if (!str)
+		return (NULL);
 	i = 0;
-	while (s[i])
+	while (s[++i])
 	{
 		if (s[i] == '\n')
 		{
@@ -54,7 +56,6 @@ static	char	*ft_ret_line(char *s)
 			break ;
 		}
 		str[i] = s[i];
-		i++;
 	}
 	return (str);
 }
@@ -87,7 +88,7 @@ char	*read_to_rest(int fd, char *rest)
 	char	*buf;
 	ssize_t	rd;
 
-	buf = ft_calloc(BUFFER_SIZE + 1, 1);
+	buf = ft_calloc(BUFFER_SIZE, sizeof(char));
 	if (!buf)
 		return (NULL);
 	rd = 1;
@@ -135,38 +136,3 @@ char	*get_next_line(int fd)
 	rest = ft_upd_rest(rest);
 	return (line);
 }
-
-/*
-char	*get_next_line(int fd)
-{
-	static char	*rest;
-	char		*buf;
-	ssize_t		tab_read;
-	char		*line;
-
-	if (fd < 0 || BUFFER_SIZE <= 0)
-		return (NULL);
-	buf = ft_calloc(BUFFER_SIZE, sizeof(char));
-	if (!buf)
-		return (NULL);
-	tab_read = 0;
-	while (!rest || !ft_strchr(rest, '\n'))
-	{
-		tab_read = read(fd, buf, BUFFER_SIZE);
-		if (tab_read <= 0)
-			break ;
-		buf[tab_read] = '\0';
-		rest = ft_strjoin(rest, buf);
-	}
-	free(buf);
-	if (tab_read == -1 || !rest || !*rest)
-	{
-		free(rest);
-		rest = NULL;
-		return (NULL);
-	}
-	line = ft_ret_line(rest);
-	rest = ft_upd_rest(rest);
-	return (line);
-}
-*/
