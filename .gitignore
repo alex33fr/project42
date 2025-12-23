@@ -6,14 +6,12 @@
 #    By: aprivalo <aprivalo@student.42angouleme.fr  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/25 14:07:41 by aprivalo          #+#    #+#              #
-#    Updated: 2025/12/23 23:56:55 by aprivalo         ###   ########.fr        #
+#    Updated: 2025/12/24 00:02:23 by aprivalo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 # Binaries
 a.out
 */a.out
-so_long
-*/so_long
 
 # Objects / libs
 *.o
