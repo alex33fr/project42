@@ -6,18 +6,34 @@
 #    By: aprivalo <aprivalo@student.42angouleme.fr  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/25 14:07:41 by aprivalo          #+#    #+#              #
-#    Updated: 2025/11/02 11:44:15 by aprivalo         ###   ########.fr        #
+#    Updated: 2025/12/23 23:56:55 by aprivalo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
+# Binaries
 a.out
+*/a.out
+so_long
+*/so_long
+
+# Objects / libs
 *.o
 *.a
 *.so
 *.exe
-/printf/libft/
+
+# Build dirs
 build/
 obj/
+
+# MLX
+minilibx-linux/libmlx.a
+
+# Editors / OS
 *~
 *.swp
 *.log
+.DS_Store
+vgcore.*
+
+# Temp
+*.ber~
