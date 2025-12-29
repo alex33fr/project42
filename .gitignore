@@ -6,12 +6,13 @@
 #    By: aprivalo <aprivalo@student.42angouleme.fr  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/25 14:07:41 by aprivalo          #+#    #+#              #
-#    Updated: 2025/12/24 00:02:23 by aprivalo         ###   ########.fr        #
+#    Updated: 2025/12/29 12:14:13 by aprivalo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 # Binaries
 a.out
 */a.out
+.out
 
 # Objects / libs
 *.o
@@ -23,6 +24,12 @@ a.out
 build/
 obj/
 
+# so_long specific
+so_long/so_long
+so_long/libft/
+so_long/.vscode/
+so_long/maps/
+
 # MLX
 minilibx-linux/libmlx.a
 
@@ -32,6 +39,7 @@ minilibx-linux/libmlx.a
 *.log
 .DS_Store
 vgcore.*
+.vscode/
 
 # Temp
 *.ber~

@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_free_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aprivalo <aprivalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/23 23:41:03 by aprivalo          #+#    #+#             */
-/*   Updated: 2025/12/29 07:17:56 by aprivalo         ###   ########.fr       */
+/*   Created: 2025/12/25 19:15:11 by aprivalo          #+#    #+#             */
+/*   Updated: 2025/12/27 18:33:49 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int main(void)
+void	ft_free_map(char **map)
 {
-    void *mlx;
-    void *win;
+    int	i;
 
-    mlx = mlx_init();
-    ft_prepare_map();
-    if (!mlx)
-        return (1);
-    win = mlx_new_window(mlx, 800, 600, "so_long");
-    if (!win)
-        return (1);
-    mlx_loop(mlx);
-    return (0);
+    if (!map)
+        return ;
+    i = 0;
+    while (map[i] != NULL)
+    {
+        free(map[i]);
+        i++;
+    }
+    free(map);
 }
