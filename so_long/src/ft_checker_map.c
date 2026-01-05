@@ -6,7 +6,7 @@
 /*   By: aprivalo <aprivalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/25 19:15:11 by aprivalo          #+#    #+#             */
-/*   Updated: 2025/12/27 18:36:44 by aprivalo         ###   ########.fr       */
+/*   Updated: 2026/01/02 18:33:06 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	ft_map_height(char **map)
 {
-	int i;
-    
+	int	i;
+
 	i = 0;
 	while (map[i])
 		i++;
@@ -24,8 +24,8 @@ int	ft_map_height(char **map)
 
 int	ft_map_width(char *line)
 {
-	int i;
-    
+	int	i;
+
 	i = 0;
 	while (line[i])
 		i++;
@@ -40,8 +40,8 @@ static int	ft_is_rectangular(char **map)
 	if (!map || !map[0])
 		return (0);
 	width = ft_map_width(map[0]);
-    if (width == 0)
-	    return (0);
+	if (width == 0)
+		return (0);
 	x = 0;
 	while (map[x])
 	{
@@ -64,7 +64,7 @@ static int	ft_is_closed_by_walls(char **map)
 	height = ft_map_height(map);
 	width = ft_map_width(map[0]);
 	y = 0;
-    x = 0;
+	x = 0;
 	while (y < width)
 	{
 		if (map[0][y] != '1' || map[height - 1][y] != '1')
@@ -79,19 +79,20 @@ static int	ft_is_closed_by_walls(char **map)
 	}
 	return (1);
 }
-int ft_checker_map(char **map)
+
+int	ft_checker_map(char **map)
 {
-    if (ft_is_rectangular(map) != 1)
+	if (ft_is_rectangular(map) != 1)
 	{
 		ft_printf("Error: Map is not rectangular\n");
-        ft_free_map(map);
+		ft_free_map(map);
 		return (0);
 	}
 	else if (ft_is_closed_by_walls(map) != 1)
 	{
 		ft_printf("Error: Map is not closed by walls\n");
-        ft_free_map(map);
+		ft_free_map(map);
 		return (0);
 	}
-    return (1);
+	return (1);
 }

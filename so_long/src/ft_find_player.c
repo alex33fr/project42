@@ -1,37 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_find_player.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aprivalo <aprivalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/23 23:41:03 by aprivalo          #+#    #+#             */
-/*   Updated: 2026/01/05 17:00:54 by aprivalo         ###   ########.fr       */
+/*   Created: 2026/01/02 16:44:17 by aprivalo          #+#    #+#             */
+/*   Updated: 2026/01/02 16:55:32 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	main(void)
+void	ft_find_player(t_game *game)
 {
-	t_game	game;
+	int	x;
+	int	y;
 
-	game.map = ft_prepare_map();
-	if (!game.map)
-		return (1);
-
-	game.mlx = mlx_init();
-	if (!game.mlx)
-		return (1);
-
-	game.win = mlx_new_window(game.mlx, 800, 600, "so_long");
-
-	ft_init_game(&game);
-	ft_find_player(&game);
-	game.map_height = ft_map_height(game.map);
-	game.map_width = ft_map_width(game.map[0]);
-    ft_tracer_map(&game);
-	mlx_loop(game.mlx);
-	return (0);
+	x = 0;
+	while (game->map[x])
+	{
+		y = 0;
+		while (game->map[x][y])
+		{
+			if (game->map[x][y] == 'P')
+			{
+				game->p_x = x;
+				game->p_y = y;
+			}
+			if (game->map[x][y] == 'C')
+				game->coins++;
+			y++;
+		}
+		x++;
+	}
 }
-

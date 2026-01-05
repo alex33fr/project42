@@ -17,7 +17,10 @@ SRCS        = main.c \
 			ft_open_read_prepare_map_fd.c \
 			ft_checker_map.c \
 			ft_free_map.c \
-			ft_has_valid_chars.c 
+			ft_has_valid_chars.c \
+			ft_find_player.c \
+			ft_init_game.c \
+			ft_tracer_map.c 
 SRC_PRE		= $(addprefix $(SRC_DIR)/, $(SRCS))
 
 OBJ_DIR     = obj
