@@ -6,7 +6,7 @@
 #    By: aprivalo <aprivalo@student.42angouleme.fr  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/25 14:07:41 by aprivalo          #+#    #+#              #
-#    Updated: 2025/12/29 12:14:13 by aprivalo         ###   ########.fr        #
+#    Updated: 2026/01/15 19:09:13 by aprivalo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 # Binaries
@@ -26,9 +26,7 @@ obj/
 
 # so_long specific
 so_long/so_long
-so_long/libft/
 so_long/.vscode/
-so_long/maps/
 
 # MLX
 minilibx-linux/libmlx.a
