@@ -1,26 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_print_hex_up.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aprivalo <aprivalo@student.42angouleme.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/25 14:43:16 by aprivalo          #+#    #+#             */
-/*   Updated: 2025/12/26 11:08:08 by aprivalo         ###   ########.fr       */
+/*   Created: 2025/11/03 17:22:58 by aprivalo          #+#    #+#             */
+/*   Updated: 2025/12/25 00:48:16 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s)
+static unsigned int	ft_hex_calc(unsigned int nb)
 {
-	char	*tab_dup;
-	int		size;
+	unsigned int	i;
 
-	size = ft_strlen(s);
-	tab_dup = ft_calloc(size, sizeof(char));
-	if (!tab_dup)
-		return (NULL);
-	ft_strlcpy(tab_dup, s, size + 1);
-	return (tab_dup);
+	i = 0;
+	if (nb > 15)
+	{
+		i += ft_hex_calc(nb / 16);
+		i += ft_hex_calc(nb % 16);
+	}
+	else
+	{
+		ft_putchar_fd(BASE_HEX_UP[nb], 1);
+		i++;
+	}
+	return (i);
+}
+
+int	ft_print_hex_up(va_list args)
+{
+	unsigned int	len;
+	unsigned int	nb;
+
+	len = 0;
+	nb = va_arg(args, unsigned int);
+	len = ft_hex_calc(nb);
+	return (len);
 }

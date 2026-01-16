@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_int_len.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aprivalo <aprivalo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aprivalo <aprivalo@student.42angouleme.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/21 16:48:50 by aprivalo          #+#    #+#             */
-/*   Updated: 2025/12/28 00:40:25 by aprivalo         ###   ########.fr       */
+/*   Created: 2025/12/25 01:23:22 by aprivalo          #+#    #+#             */
+/*   Updated: 2025/12/25 01:26:57 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
+int	ft_int_len(int n)
 {
-	char	*tab;
-	size_t	t;
+	int	i;
 
-	if (size != 0 && nmemb > ((size_t) - 1) / size)
-		return (NULL);
-	t = size * nmemb;
-	tab = malloc(t + 1);
-	if (!tab)
-		return (NULL);
-	ft_bzero(tab, t);
-	return (tab);
+	if (n == 0)
+		return (1);
+	i = 0;
+	while (n != 0)
+	{
+		n /= 10;
+		i++;
+	}
+	return (i);
 }

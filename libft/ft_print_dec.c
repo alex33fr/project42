@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_print_dec.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aprivalo <aprivalo@student.42angouleme.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/26 17:58:20 by aprivalo          #+#    #+#             */
-/*   Updated: 2025/12/25 01:24:38 by aprivalo         ###   ########.fr       */
+/*   Created: 2025/11/03 10:56:47 by aprivalo          #+#    #+#             */
+/*   Updated: 2025/12/25 01:07:32 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_init(long *nb, long *sign, char **tab_itoa)
+static unsigned int	ft_init(unsigned long *nb, char **tab_itoa)
 {
 	if (*nb == 0)
 	{
@@ -22,30 +22,21 @@ static int	ft_init(long *nb, long *sign, char **tab_itoa)
 		(*tab_itoa)[0] = '0';
 		return (1);
 	}
-	if (*nb < 0)
-	{
-		*sign = 1;
-		*nb *= -1;
-	}
 	return (0);
 }
 
-char	*ft_itoa(int n)
+static char	*ft_itoa_uns(unsigned int n)
 {
-	char		*tab_itoa;
-	long int	len;
-	long int	nb;
-	long int	sign;
-	long int	state;
+	char			*tab_itoa;
+	unsigned long	len;
+	unsigned long	nb;
+	unsigned long	state;
 
-	nb = (long)n;
-	sign = 0;
-	state = ft_init(&nb, &sign, &tab_itoa);
-	if (state == -1)
-		return (NULL);
+	nb = (unsigned long)n;
+	state = ft_init(&nb, &tab_itoa);
 	if (state == 1)
 		return (tab_itoa);
-	len = ft_int_len(n) + sign;
+	len = ft_int_len(n);
 	tab_itoa = ft_calloc(len + 1, sizeof(char));
 	if (!tab_itoa)
 		return (NULL);
@@ -54,7 +45,19 @@ char	*ft_itoa(int n)
 		tab_itoa[--len] = (nb % 10) + '0';
 		nb /= 10;
 	}
-	if (sign)
-		tab_itoa[0] = '-';
 	return (tab_itoa);
+}
+
+int	ft_print_dec(va_list args)
+{
+	unsigned int	asc;
+	unsigned int	len;
+	char			*str;
+
+	asc = va_arg(args, unsigned int);
+	str = ft_itoa_uns(asc);
+	len = ft_strlen(str);
+	write(1, str, len);
+	free(str);
+	return (len);
 }

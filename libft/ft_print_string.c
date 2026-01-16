@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_print_string.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aprivalo <aprivalo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aprivalo <aprivalo@student.42angouleme.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/21 16:48:50 by aprivalo          #+#    #+#             */
-/*   Updated: 2025/12/28 00:40:25 by aprivalo         ###   ########.fr       */
+/*   Created: 2025/11/02 17:30:04 by aprivalo          #+#    #+#             */
+/*   Updated: 2025/12/25 00:51:50 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
+int	ft_print_string(va_list args)
 {
-	char	*tab;
-	size_t	t;
+	char	*str;
+	int		len;
 
-	if (size != 0 && nmemb > ((size_t) - 1) / size)
-		return (NULL);
-	t = size * nmemb;
-	tab = malloc(t + 1);
-	if (!tab)
-		return (NULL);
-	ft_bzero(tab, t);
-	return (tab);
+	str = va_arg(args, char *);
+	if (!str)
+		str = "(null)";
+	len = ft_strlen(str);
+	write(1, str, len);
+	return (len);
 }
