@@ -6,7 +6,7 @@
 /*   By: aprivalo <aprivalo@student.42angouleme.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 18:49:22 by aprivalo          #+#    #+#             */
-/*   Updated: 2025/12/25 00:45:11 by aprivalo         ###   ########.fr       */
+/*   Updated: 2026/02/02 10:37:06 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ static	int	ft_type_args(char type, va_list args)
 {
 	int	len;
 
+	len = 0;
 	if (type == 'c')
 		len = ft_print_char(args);
 	else if (type == 's')
