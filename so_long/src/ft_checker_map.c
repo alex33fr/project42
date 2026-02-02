@@ -6,33 +6,13 @@
 /*   By: aprivalo <aprivalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/25 19:15:11 by aprivalo          #+#    #+#             */
-/*   Updated: 2026/01/02 18:33:06 by aprivalo         ###   ########.fr       */
+/*   Updated: 2026/01/29 17:25:19 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	ft_map_height(char **map)
-{
-	int	i;
-
-	i = 0;
-	while (map[i])
-		i++;
-	return (i);
-}
-
-int	ft_map_width(char *line)
-{
-	int	i;
-
-	i = 0;
-	while (line[i])
-		i++;
-	return (i);
-}
-
-static int	ft_is_rectangular(char **map)
+int	ft_is_rectangular(char **map)
 {
 	int	x;
 	int	width;
@@ -52,7 +32,7 @@ static int	ft_is_rectangular(char **map)
 	return (1);
 }
 
-static int	ft_is_closed_by_walls(char **map)
+int	ft_is_closed_by_walls(char **map)
 {
 	int	x;
 	int	y;
@@ -80,19 +60,33 @@ static int	ft_is_closed_by_walls(char **map)
 	return (1);
 }
 
+static int	ft_has_pickaxe(char **map)
+{
+	int	x;
+	int	y;
+
+	x = 0;
+	while (map[x])
+	{
+		y = 0;
+		while (map[x][y])
+		{
+			if (map[x][y] == 'C')
+				return (1);
+			y++;
+		}
+		x++;
+	}
+	return (0);
+}
+
 int	ft_checker_map(char **map)
 {
-	if (ft_is_rectangular(map) != 1)
-	{
-		ft_printf("Error: Map is not rectangular\n");
-		ft_free_map(map);
+	if (!ft_is_rectangular(map))
 		return (0);
-	}
-	else if (ft_is_closed_by_walls(map) != 1)
-	{
-		ft_printf("Error: Map is not closed by walls\n");
-		ft_free_map(map);
+	if (!ft_is_closed_by_walls(map))
 		return (0);
-	}
+	if (!ft_has_pickaxe(map))
+		return (0);
 	return (1);
 }

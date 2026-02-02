@@ -1,23 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_init_pickaxes.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aprivalo <aprivalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/23 23:41:03 by aprivalo          #+#    #+#             */
-/*   Updated: 2026/01/29 17:12:37 by aprivalo         ###   ########.fr       */
+/*   Created: 2025/12/24 10:45:46 by aprivalo          #+#    #+#             */
+/*   Updated: 2026/01/29 15:40:38 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	main(int ac, char **av)
+void	ft_init_pickaxes(t_game *game)
 {
-	t_game	game;
+	int	x;
+	int	y;
 
-	if (ac != 2)
-		return (ft_error("Error 1, bad format of map: ./so_long map.ber"));
-	ft_game_start(&game, av[1]);
-	return (0);
+	game->total_pickaxes = 0;
+	game->picked_pickaxes = 0;
+	game->used_pickaxes = 0;
+	game->gate_state = 1;
+	x = 0;
+	while (x < game->map_height)
+	{
+		y = 0;
+		while (y < game->map_width)
+		{
+			if (game->map[x][y] == 'C')
+				game->total_pickaxes++;
+			y++;
+		}
+		x++;
+	}
 }

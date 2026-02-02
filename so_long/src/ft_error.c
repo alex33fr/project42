@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aprivalo <aprivalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/23 23:41:03 by aprivalo          #+#    #+#             */
-/*   Updated: 2026/01/29 17:12:37 by aprivalo         ###   ########.fr       */
+/*   Updated: 2026/01/29 17:13:48 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	main(int ac, char **av)
+int	ft_error(char *str)
 {
-	t_game	game;
-
-	if (ac != 2)
-		return (ft_error("Error 1, bad format of map: ./so_long map.ber"));
-	ft_game_start(&game, av[1]);
-	return (0);
+	if (str)
+		write(2, str, ft_strlen(str));
+	return (1);
 }

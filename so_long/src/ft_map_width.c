@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_map_width.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aprivalo <aprivalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/23 23:41:03 by aprivalo          #+#    #+#             */
-/*   Updated: 2026/01/29 17:12:37 by aprivalo         ###   ########.fr       */
+/*   Created: 2025/12/25 19:15:11 by aprivalo          #+#    #+#             */
+/*   Updated: 2026/01/29 17:20:58 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	main(int ac, char **av)
+int	ft_map_width(char *line)
 {
-	t_game	game;
+	int	i;
 
-	if (ac != 2)
-		return (ft_error("Error 1, bad format of map: ./so_long map.ber"));
-	ft_game_start(&game, av[1]);
-	return (0);
+	if (!line)
+		return (0);
+	i = 0;
+	while (line[i])
+		i++;
+	return (i);
 }

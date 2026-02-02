@@ -1,23 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_init_player.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aprivalo <aprivalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/23 23:41:03 by aprivalo          #+#    #+#             */
-/*   Updated: 2026/01/29 17:12:37 by aprivalo         ###   ########.fr       */
+/*   Created: 2025/12/25 19:15:11 by aprivalo          #+#    #+#             */
+/*   Updated: 2026/01/26 16:16:45 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	main(int ac, char **av)
+void	ft_init_player(t_game *g)
 {
-	t_game	game;
+	int	x;
+	int	y;
 
-	if (ac != 2)
-		return (ft_error("Error 1, bad format of map: ./so_long map.ber"));
-	ft_game_start(&game, av[1]);
-	return (0);
+	x = 0;
+	while (g->map[x])
+	{
+		y = 0;
+		while (g->map[x][y])
+		{
+			if (g->map[x][y] == 'P')
+			{
+				g->p_x = x;
+				g->p_y = y;
+				return ;
+			}
+			y++;
+		}
+		x++;
+	}
 }

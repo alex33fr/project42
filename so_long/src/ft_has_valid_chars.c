@@ -6,7 +6,7 @@
 /*   By: aprivalo <aprivalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/25 19:15:11 by aprivalo          #+#    #+#             */
-/*   Updated: 2026/01/02 15:16:40 by aprivalo         ###   ########.fr       */
+/*   Updated: 2026/01/29 17:26:34 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ static int	ft_has_valid_c(char **map)
 	return (1);
 }
 
-static int	ft_has_valid_elements(char **map)
+int	ft_has_valid_elements(char **map)
 {
 	if (ft_has_valid_p(map) == 0)
 		return (0);
@@ -108,6 +108,11 @@ int	ft_has_valid_chars(char **map)
 		y = 0;
 		while (map[x][y])
 		{
+			if (map[x][y] == '\n')
+			{
+				y++;
+				continue ;
+			}
 			if (map[x][y] != '0' && map[x][y] != '1' &&
 				map[x][y] != 'P' && map[x][y] != 'E' &&
 				map[x][y] != 'C')
