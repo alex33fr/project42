@@ -6,7 +6,7 @@
 #    By: aprivalo <aprivalo@student.42angouleme.fr  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/25 14:07:41 by aprivalo          #+#    #+#              #
-#    Updated: 2026/01/15 19:09:13 by aprivalo         ###   ########.fr        #
+#    Updated: 2026/02/02 10:57:09 by aprivalo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 # Binaries
@@ -38,6 +38,3 @@ minilibx-linux/libmlx.a
 .DS_Store
 vgcore.*
 .vscode/
-
-# Temp
-*.ber~
