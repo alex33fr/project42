@@ -6,7 +6,7 @@
 /*   By: aprivalo <aprivalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 16:55:32 by aprivalo          #+#    #+#             */
-/*   Updated: 2026/01/28 23:08:46 by aprivalo         ###   ########.fr       */
+/*   Updated: 2026/02/13 16:04:31 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,35 @@
 
 void	*ft_player_img(t_game *g)
 {
-	if (g->p_dir == DIR_NORTH)
+	if (g->p_dir == NORTH)
 		return (g->img_p_north);
-	if (g->p_dir == DIR_WEST)
+	else if (g->p_dir == WEST)
 		return (g->img_p_west);
-	if (g->p_dir == DIR_EAST)
+	else if (g->p_dir == EAST)
 		return (g->img_p_east);
-	return (g->img_p_south);
+	else
+		return (g->img_p_south);
 }
 
 static void	ft_draw_base(t_game *game, int x, int y)
 {
-	if (game->map[x][y] == '1')
+	char	tile;
+
+	tile = game->map[x][y];
+	if (tile == '1')
 		mlx_put_image_to_window(game->mlx,
 			game->win, game->img_wall, y * 32, x * 32);
 	else
 		mlx_put_image_to_window(game->mlx,
 			game->win, game->img_floor, y * 32, x * 32);
-	if (game->map[x][y] == 'C')
+	if (tile == 'C')
 		mlx_put_image_to_window(game->mlx,
 			game->win, game->img_pickaxe, y * 32, x * 32);
-	if (game->map[x][y] == 'E')
+	else if (tile == 'E')
 		mlx_put_image_to_window(game->mlx,
 			game->win, ft_gate_img(game), y * 32, x * 32);
 }
+
 
 void	ft_tracer_map(t_game *game)
 {

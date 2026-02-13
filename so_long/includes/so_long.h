@@ -6,7 +6,7 @@
 /*   By: aprivalo <aprivalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/23 23:41:30 by aprivalo          #+#    #+#             */
-/*   Updated: 2026/01/29 17:32:44 by aprivalo         ###   ########.fr       */
+/*   Updated: 2026/02/13 16:09:15 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,10 @@
 # define KEY_LEFT 65361
 # define KEY_RIGHT 65363
 # define KEY_ESC 65307
-typedef enum e_dir{DIR_SOUTH,DIR_NORTH,DIR_WEST,DIR_EAST}t_dir;
+# define SOUTH 0
+# define NORTH 1
+# define WEST 2
+# define EAST 3
 typedef struct s_game{
 	void	*mlx;
 	void	*win;
@@ -43,7 +46,7 @@ typedef struct s_game{
 	int		map_height;
 	int		p_x;
 	int		p_y;
-	t_dir	p_dir;
+	int		p_dir;
 	int		total_pickaxes;
 	int		picked_pickaxes;
 	int		used_pickaxes;
@@ -74,6 +77,5 @@ void	ft_exit(t_game *game,char *msg);
 int		ft_error(char *str);
 int		ft_has_ber_extension(char *filename);
 int		ft_checker_map(char **map);
-
 #endif
 

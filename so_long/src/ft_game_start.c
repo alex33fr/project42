@@ -6,7 +6,7 @@
 /*   By: aprivalo <aprivalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 10:45:46 by aprivalo          #+#    #+#             */
-/*   Updated: 2026/01/29 17:38:56 by aprivalo         ###   ########.fr       */
+/*   Updated: 2026/02/13 16:10:56 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@ static void	init_map(t_game *game, char *map_path)
 {
 	game->map = ft_prepare_map(map_path);
 	if (!game->map)
-		ft_exit(game, "Error\nInvalid map");
+		ft_exit(game, "Error 2\nInvalid map");
 	if (!ft_has_valid_chars(game->map)
 		|| !ft_is_rectangular(game->map)
 		|| !ft_is_closed_by_walls(game->map)
 		|| !ft_has_valid_elements(game->map))
-		ft_exit(game, "Error\nInvalid map");
+		ft_exit(game, "Error 3\nInvalid map");
 	game->map_height = ft_map_height(game->map);
 	game->map_width = ft_map_width(game->map[0]);
 }
@@ -35,6 +35,8 @@ static void	init_mlx(t_game *game)
 			game->map_width * 32,
 			game->map_height * 32,
 			"so_long");
+	if (!game->win)
+	ft_exit(game, "Error\nWindow failed");
 }
 
 static void	init_entities(t_game *game)
