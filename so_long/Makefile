@@ -1,6 +1,6 @@
 NAME        = so_long
 
-CC          = clang
+CC          = cc
 CFLAGS      = -Wall -Wextra -Werror
 
 MLX_DIR     = minilibx-linux
