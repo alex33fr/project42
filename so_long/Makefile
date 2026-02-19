@@ -1,13 +1,13 @@
 NAME        = so_long
 
-CC          = cc
-CFLAGS      = -Wall -Wextra -Werror -g
+CC          = clang
+CFLAGS      = -Wall -Wextra -Werror
 
 MLX_DIR     = minilibx-linux
 MLX_LIB     = $(MLX_DIR)/libmlx.a
 MLX_ARCHIVE = minilibx-linux.tgz
 MLX_URL     = https://cdn.intra.42.fr/document/document/45308/minilibx-linux.tgz
-MLX_FLAGS   = -L$(MLX_DIR) -lmlx -lXext -lX11 -lm -lz
+MLX_FLAGS   = $(MLX_DIR)/libmlx.a -lX11 -lXext -lm -lz
 
 LIBFT_DIR   = libft
 LIBFT_LIB   = $(LIBFT_DIR)/libft.a

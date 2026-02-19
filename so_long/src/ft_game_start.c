@@ -6,7 +6,7 @@
 /*   By: aprivalo <aprivalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 10:45:46 by aprivalo          #+#    #+#             */
-/*   Updated: 2026/02/19 12:25:27 by aprivalo         ###   ########.fr       */
+/*   Updated: 2026/02/19 16:04:53 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ static void init_mlx(t_game *game)
     game->mlx = mlx_init();
     if (!game->mlx)
         ft_exit(game, "Error\nMLX failed");
-
     game->win = mlx_new_window(game->mlx,
             game->map_width * 32,
             game->map_height * 32,
