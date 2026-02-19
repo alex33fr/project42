@@ -6,7 +6,7 @@
 /*   By: aprivalo <aprivalo@student.42angouleme.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/25 14:36:14 by aprivalo          #+#    #+#             */
-/*   Updated: 2025/10/25 14:36:20 by aprivalo         ###   ########.fr       */
+/*   Updated: 2026/02/19 12:34:44 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	s = (unsigned char *)src;
 	d = (unsigned char *)dest;
 	i = 0;
-	if (!dest && !src)
+	if (!dest && !src && n > 0)
 		return (NULL);
 	while (i < n)
 	{

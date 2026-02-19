@@ -6,7 +6,7 @@
 /*   By: aprivalo <aprivalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 10:45:46 by aprivalo          #+#    #+#             */
-/*   Updated: 2026/01/29 15:41:14 by aprivalo         ###   ########.fr       */
+/*   Updated: 2026/02/19 12:23:32 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void	ft_try_move(t_game *g, int dx, int dy)
 
 	nx = g->p_x + dx;
 	ny = g->p_y + dy;
+	if (nx < 0 || ny < 0 || nx >= g->map_height || ny >= g->map_width)
+		return ;
 	if (g->map[nx][ny] == '1')
 		return ;
 	if (g->map[nx][ny] == 'C')

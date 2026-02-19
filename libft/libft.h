@@ -6,7 +6,7 @@
 /*   By: aprivalo <aprivalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/25 14:43:46 by aprivalo          #+#    #+#             */
-/*   Updated: 2025/12/26 11:53:20 by aprivalo         ###   ########.fr       */
+/*   Updated: 2026/02/19 12:37:34 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ void			ft_putstr_fd(char *s, int fd);
 void			ft_putendl_fd(char *s, int fd);
 void			ft_putnbr_fd(int n, int fd);
 char			*get_next_line(int fd);
-int				ft_printf(const char *s, ...);
 unsigned int	ft_int_len_un(unsigned int n);
 int				ft_int_len(int n);
 #endif

@@ -6,7 +6,7 @@
 /*   By: aprivalo <aprivalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 10:45:46 by aprivalo          #+#    #+#             */
-/*   Updated: 2026/02/13 15:44:14 by aprivalo         ###   ########.fr       */
+/*   Updated: 2026/02/19 12:27:54 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 static void	ft_destroy_images(t_game *game)
 {
+	if (!game || !game->mlx)
+        return ;
 	if (game->img_wall)
 		mlx_destroy_image(game->mlx, game->img_wall);
 	if (game->img_floor)
@@ -40,16 +42,16 @@ static void	ft_destroy_images(t_game *game)
 
 int ft_close(t_game *game)
 {
-	ft_destroy_images(game);
-	if (game->win)
-		mlx_destroy_window(game->mlx, game->win);
-	if (game->mlx)
-	{
-		mlx_destroy_display(game->mlx);
-		free(game->mlx);
+    ft_destroy_images(game);
+    if (game->win)
+        mlx_destroy_window(game->mlx, game->win);
+    if (game->mlx)
+    {
+        mlx_destroy_display(game->mlx);
+        free(game->mlx);
 	}
-	ft_free_map(game->map);
-	free(game);
-	exit(0);
+    if (game->map)
+        ft_free_map(game->map);
+    exit(0);
 }
 

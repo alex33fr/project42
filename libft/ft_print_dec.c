@@ -6,7 +6,7 @@
 /*   By: aprivalo <aprivalo@student.42angouleme.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 10:56:47 by aprivalo          #+#    #+#             */
-/*   Updated: 2025/12/25 01:07:32 by aprivalo         ###   ########.fr       */
+/*   Updated: 2026/02/19 12:36:19 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ int	ft_print_dec(va_list args)
 
 	asc = va_arg(args, unsigned int);
 	str = ft_itoa_uns(asc);
+	if (!str)
+		return (0);
 	len = ft_strlen(str);
 	write(1, str, len);
 	free(str);

@@ -6,7 +6,7 @@
 /*   By: aprivalo <aprivalo@student.42angouleme.fr  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/02 21:22:00 by aprivalo          #+#    #+#             */
-/*   Updated: 2025/12/25 00:51:36 by aprivalo         ###   ########.fr       */
+/*   Updated: 2026/02/19 12:35:35 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	ft_print_ptr(va_list args)
 	unsigned long	addr;
 	int				len;
 
-	addr = (unsigned long)va_arg(args, unsigned long);
+	addr = (unsigned long)va_arg(args, void *);
 	if (addr == 0)
 		return (write(1, "(nil)", 5));
 	write(1, "0x", 2);
