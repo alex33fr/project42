@@ -6,23 +6,14 @@
 /*   By: aprivalo <aprivalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 10:45:46 by aprivalo          #+#    #+#             */
-/*   Updated: 2026/02/19 12:23:32 by aprivalo         ###   ########.fr       */
+/*   Updated: 2026/02/20 01:03:40 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	ft_try_move(t_game *g, int dx, int dy)
+static void	ft_handle_tile(t_game *g, int nx, int ny)
 {
-	int	nx;
-	int	ny;
-
-	nx = g->p_x + dx;
-	ny = g->p_y + dy;
-	if (nx < 0 || ny < 0 || nx >= g->map_height || ny >= g->map_width)
-		return ;
-	if (g->map[nx][ny] == '1')
-		return ;
 	if (g->map[nx][ny] == 'C')
 	{
 		g->picked_pickaxes++;
@@ -30,7 +21,8 @@ void	ft_try_move(t_game *g, int dx, int dy)
 	}
 	if (g->map[nx][ny] == 'E')
 	{
-		if (g->picked_pickaxes > 0 && g->used_pickaxes < g->total_pickaxes)
+		if (g->picked_pickaxes > 0
+			&& g->used_pickaxes < g->total_pickaxes)
 		{
 			g->picked_pickaxes--;
 			g->used_pickaxes++;
@@ -41,9 +33,26 @@ void	ft_try_move(t_game *g, int dx, int dy)
 			if (g->gate_state > 4)
 				g->gate_state = 4;
 		}
-		else if (g->used_pickaxes == g->total_pickaxes && g->gate_state == 4)
+		else if (g->used_pickaxes == g->total_pickaxes
+			&& g->gate_state == 4)
 			ft_win(g);
 	}
+}
+
+void	ft_try_move(t_game *g, int dx, int dy)
+{
+	int	nx;
+	int	ny;
+
+	nx = g->p_x + dx;
+	ny = g->p_y + dy;
+	if (nx < 0 || ny < 0
+		|| nx >= g->map_height
+		|| ny >= g->map_width)
+		return ;
+	if (g->map[nx][ny] == '1')
+		return ;
+	ft_handle_tile(g, nx, ny);
 	g->p_x = nx;
 	g->p_y = ny;
 	g->moves++;

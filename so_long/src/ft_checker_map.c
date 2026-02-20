@@ -6,7 +6,7 @@
 /*   By: aprivalo <aprivalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/25 19:15:11 by aprivalo          #+#    #+#             */
-/*   Updated: 2026/01/29 17:25:19 by aprivalo         ###   ########.fr       */
+/*   Updated: 2026/02/20 01:42:03 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	ft_is_closed_by_walls(char **map)
 	return (1);
 }
 
-static int	ft_has_pickaxe(char **map)
+int	ft_has_pickaxe(char **map)
 {
 	int	x;
 	int	y;
@@ -78,15 +78,4 @@ static int	ft_has_pickaxe(char **map)
 		x++;
 	}
 	return (0);
-}
-
-int	ft_checker_map(char **map)
-{
-	if (!ft_is_rectangular(map))
-		return (0);
-	if (!ft_is_closed_by_walls(map))
-		return (0);
-	if (!ft_has_pickaxe(map))
-		return (0);
-	return (1);
 }

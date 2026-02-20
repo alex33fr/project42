@@ -6,7 +6,7 @@
 /*   By: aprivalo <aprivalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 10:45:46 by aprivalo          #+#    #+#             */
-/*   Updated: 2026/01/29 15:37:20 by aprivalo         ###   ########.fr       */
+/*   Updated: 2026/02/20 01:57:42 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,12 @@ static int	ft_has_empty_line(char *s)
 	return (0);
 }
 
-static char	**ft_reader_map(int fd)
+static char	*ft_read_file(int fd)
 {
 	char	*line;
-	char	*init_map;
 	char	*tmp_map;
-	char	**map;
+	char	*init_map;
 
-	init_map = NULL;
 	tmp_map = ft_calloc(1, sizeof(char));
 	if (!tmp_map)
 		return (NULL);
@@ -48,6 +46,15 @@ static char	**ft_reader_map(int fd)
 		tmp_map = init_map;
 		line = get_next_line(fd);
 	}
+	return (tmp_map);
+}
+
+static char	**ft_reader_map(int fd)
+{
+	char	*init_map;
+	char	**map;
+
+	init_map = ft_read_file(fd);
 	if (!init_map || ft_has_empty_line(init_map))
 	{
 		free(init_map);
@@ -77,7 +84,7 @@ char	**ft_prepare_map(char *filename)
 	close(fd);
 	if (!map)
 		return (NULL);
-	if (!ft_checker_map(map))
+	if (!ft_has_pickaxe(map))
 	{
 		ft_free_map(map);
 		return (NULL);

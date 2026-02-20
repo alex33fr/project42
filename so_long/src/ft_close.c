@@ -6,7 +6,7 @@
 /*   By: aprivalo <aprivalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 10:45:46 by aprivalo          #+#    #+#             */
-/*   Updated: 2026/02/19 15:17:49 by aprivalo         ###   ########.fr       */
+/*   Updated: 2026/02/20 00:46:48 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	ft_destroy_images(t_game *game)
 {
 	if (!game || !game->mlx)
-        return ;
+		return ;
 	if (game->img_wall)
 		mlx_destroy_image(game->mlx, game->img_wall);
 	if (game->img_floor)
@@ -40,20 +40,19 @@ static void	ft_destroy_images(t_game *game)
 		mlx_destroy_image(game->mlx, game->img_pickaxe);
 }
 
-int ft_close(t_game *game)
+int	ft_close(t_game *game)
 {
-    if (!game)
-        exit(0);
-    ft_destroy_images(game);
-    if (game->win)
-        mlx_destroy_window(game->mlx, game->win);
-    if (game->mlx)
-    {
-        mlx_destroy_display(game->mlx);
-        free(game->mlx);
-    }
-    if (game->map)
-        ft_free_map(game->map);
-    exit(0);
+	if (!game)
+		exit(0);
+	ft_destroy_images(game);
+	if (game->win)
+		mlx_destroy_window(game->mlx, game->win);
+	if (game->mlx)
+	{
+		mlx_destroy_display(game->mlx);
+		free(game->mlx);
+	}
+	if (game->map)
+		ft_free_map(game->map);
+	exit(0);
 }
-

@@ -6,7 +6,7 @@
 /*   By: aprivalo <aprivalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/23 23:41:30 by aprivalo          #+#    #+#             */
-/*   Updated: 2026/02/19 15:59:58 by aprivalo         ###   ########.fr       */
+/*   Updated: 2026/02/20 01:43:51 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,9 @@
 # define NORTH 1
 # define WEST 2
 # define EAST 3
-typedef struct s_game{
+
+typedef struct s_game
+{
 	void	*mlx;
 	void	*win;
 	void	*img_wall;
@@ -52,7 +54,7 @@ typedef struct s_game{
 	int		used_pickaxes;
 	int		gate_state;
 	int		moves;
-}t_game;
+}	t_game;
 char	**ft_prepare_map(char *path);
 void	ft_free_map(char **map);
 int		ft_map_height(char **map);
@@ -60,22 +62,21 @@ int		ft_map_width(char *line);
 int		ft_has_valid_chars(char **map);
 int		ft_is_rectangular(char **map);
 int		ft_is_closed_by_walls(char **map);
-int		ft_has_valid_elements(char **map);
 int		ft_map_has_valid_path(char **map);
-void	ft_game_start(t_game *game,char *map_path);
+void	ft_game_start(t_game *game, char *map_path);
 void	ft_init_game(t_game *game);
 void	ft_init_player(t_game *game);
 void	ft_init_pickaxes(t_game *game);
 void	ft_tracer_map(t_game *game);
 void	*ft_gate_img(t_game *game);
 void	*ft_player_img(t_game *game);
-void	ft_try_move(t_game *game,int dx,int dy);
-int		ft_key_input(int keycode,t_game *game);
+void	ft_try_move(t_game *game, int dx, int dy);
+int		ft_key_input(int keycode, t_game *game);
 int		ft_close(t_game *game);
 void	ft_win(t_game *game);
-void	ft_exit(t_game *game,char *msg);
+void	ft_exit(t_game *game, char *msg);
 int		ft_error(char *str);
+int		ft_has_pickaxe(char **map);
 int		ft_has_ber_extension(char *filename);
 int		ft_checker_map(char **map);
 #endif
-

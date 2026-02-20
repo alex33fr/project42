@@ -6,7 +6,7 @@
 /*   By: aprivalo <aprivalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/25 19:15:11 by aprivalo          #+#    #+#             */
-/*   Updated: 2026/01/29 17:26:34 by aprivalo         ###   ########.fr       */
+/*   Updated: 2026/02/20 02:08:31 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,44 +84,13 @@ static int	ft_has_valid_c(char **map)
 	return (1);
 }
 
-int	ft_has_valid_elements(char **map)
-{
-	if (ft_has_valid_p(map) == 0)
-		return (0);
-	if (ft_has_valid_e(map) == 0)
-		return (0);
-	if (ft_has_valid_c(map) == 0)
-		return (0);
-	return (1);
-}
-
 int	ft_has_valid_chars(char **map)
 {
-	int	x;
-	int	y;
-
-	if (!map)
+	if (!ft_has_valid_p(map))
 		return (0);
-	x = 0;
-	while (map[x])
-	{
-		y = 0;
-		while (map[x][y])
-		{
-			if (map[x][y] == '\n')
-			{
-				y++;
-				continue ;
-			}
-			if (map[x][y] != '0' && map[x][y] != '1' &&
-				map[x][y] != 'P' && map[x][y] != 'E' &&
-				map[x][y] != 'C')
-				return (0);
-			y++;
-		}
-		x++;
-	}
-	if (ft_has_valid_elements(map) == 0)
+	if (!ft_has_valid_e(map))
+		return (0);
+	if (!ft_has_valid_c(map))
 		return (0);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: aprivalo <aprivalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 16:55:32 by aprivalo          #+#    #+#             */
-/*   Updated: 2026/02/13 16:04:31 by aprivalo         ###   ########.fr       */
+/*   Updated: 2026/02/20 00:49:12 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ static void	ft_draw_base(t_game *game, int x, int y)
 		mlx_put_image_to_window(game->mlx,
 			game->win, ft_gate_img(game), y * 32, x * 32);
 }
-
 
 void	ft_tracer_map(t_game *game)
 {
