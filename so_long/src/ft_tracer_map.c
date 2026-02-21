@@ -6,22 +6,22 @@
 /*   By: aprivalo <aprivalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 16:55:32 by aprivalo          #+#    #+#             */
-/*   Updated: 2026/02/20 00:49:12 by aprivalo         ###   ########.fr       */
+/*   Updated: 2026/02/21 11:11:30 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	*ft_player_img(t_game *g)
+void	*ft_player_img(t_game *game)
 {
-	if (g->p_dir == NORTH)
-		return (g->img_p_north);
-	else if (g->p_dir == WEST)
-		return (g->img_p_west);
-	else if (g->p_dir == EAST)
-		return (g->img_p_east);
+	if (game->p_dir == NORTH)
+		return (game->img_p_north);
+	else if (game->p_dir == WEST)
+		return (game->img_p_west);
+	else if (game->p_dir == EAST)
+		return (game->img_p_east);
 	else
-		return (g->img_p_south);
+		return (game->img_p_south);
 }
 
 static void	ft_draw_base(t_game *game, int x, int y)

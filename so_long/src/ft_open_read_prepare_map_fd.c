@@ -6,7 +6,7 @@
 /*   By: aprivalo <aprivalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 10:45:46 by aprivalo          #+#    #+#             */
-/*   Updated: 2026/02/20 01:57:42 by aprivalo         ###   ########.fr       */
+/*   Updated: 2026/02/21 11:15:54 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,25 +68,27 @@ static char	**ft_reader_map(int fd)
 char	**ft_prepare_map(char *filename)
 {
 	int		fd;
-	char	*file;
+	char	*path;
 	char	**map;
 
+	fd = -1;
+	path = NULL;
+	map = NULL;
 	if (!ft_has_ber_extension(filename))
 		return (NULL);
-	file = ft_strjoin("maps/", filename);
-	if (!file)
+	path = ft_strjoin("maps/", filename);
+	if (!path)
 		return (NULL);
-	fd = open(file, O_RDONLY);
-	free(file);
+	fd = open(path, O_RDONLY);
+	free(path);
 	if (fd < 0)
 		return (NULL);
 	map = ft_reader_map(fd);
 	close(fd);
-	if (!map)
-		return (NULL);
-	if (!ft_has_pickaxe(map))
+	if (!map || !ft_has_pickaxe(map))
 	{
-		ft_free_map(map);
+		if (map)
+			ft_free_map(map);
 		return (NULL);
 	}
 	return (map);
