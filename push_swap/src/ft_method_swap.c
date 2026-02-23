@@ -6,54 +6,56 @@
 /*   By: aprivalo <aprivalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/15 16:26:58 by aprivalo          #+#    #+#             */
-/*   Updated: 2026/02/16 12:17:17 by aprivalo         ###   ########.fr       */
+/*   Updated: 2026/02/23 15:20:38 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void    sa(t_stack **sa)
+void    sa(t_stack **s_sa, int type_bool)
 {
-    t_node  *target_sa;
-    t_node  *next_sa;
-    
-    target_sa = NULL;
-    next_sa = NULL;
-    if (*sa && (*sa)->head && (*sa)->head->next)
+    t_node  *first;
+    t_node  *second;
+
+    if (*s_sa && (*s_sa)->head && (*s_sa)->head->next)
     {
-        next_sa = (*sa)->head->next;
-        target_sa = next_sa->next;
+        first = (*s_sa)->head;
+        second = first->next;
+         
+        first->next = second->next;
         
-        /*
-        head = A
-        next_sa = B
-        target_sa = C
-        */
-        
-        next_sa->next = (*sa)->head;
-        (*sa)->head->next = target_sa;
-        (*sa)->head = target_sa;
-        ft_printf("sa\n");
+        second->next = first;
+        (*s_sa)->head = second;
+        if (type_bool == 1)
+            ft_printf("sa\n");
+    }
+}
+ 
+void    sb(t_stack **s_sb, int type_bool)
+{
+    t_node  *first;
+    t_node  *second;
+    
+    if (*s_sb && (*s_sb)->head && (*s_sb)->head->next)
+    {
+        first = (*s_sb)->head;
+        second = first->next;
+        first->next = second->next;
+        second->next = first;
+        (*s_sb)->head = second;
+        if (type_bool == 1)
+            ft_printf("sb\n");
     }
 }
 
-void    sb(t_stack **sb)
+void    ss(t_stack **s_sa, t_stack **s_sb, int type_bool)
 {
-    t_node  *actual_sb;
-    t_node  *next_sb;
-    
-    if (*sb && (*sb)->head && (*sb)->head->next)
+    if (*s_sa && *s_sb && ((*s_sa)->head &&
+        (*s_sa)->head->next) && ((*s_sb)->head && (*s_sb)->head->next))
     {
-        actual_sb = next_sb->next;
-        next_sb = (*sb)->head->next;
-        next_sb->next = (*sb)->head;
-        (*sb)->head->next = actual_sb;
-        (*sb)->head = next_sb;
-        ft_printf("sb\n");
+        sa(s_sa, 0);
+        sb(s_sb, 0);
+        if (type_bool == 1)
+            ft_printf("ss\n");
     }
-}
-
-void    ss(t_stack **stack_a, t_stack **stack_b)
-{
-    
 }

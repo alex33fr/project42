@@ -6,7 +6,7 @@
 /*   By: aprivalo <aprivalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/15 11:46:18 by aprivalo          #+#    #+#             */
-/*   Updated: 2026/02/16 12:09:22 by aprivalo         ###   ########.fr       */
+/*   Updated: 2026/02/23 18:18:57 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 # include "libft.h"
 typedef struct s_node
 {
-    int             cost_s_a;
-    int             cost_s_b;
-    int             val;
+    int             cost_a;
+    int             cost_b;
+    int             value;
     int             index;
     struct s_node   *target;
-    struct s_node   *next; //
+    struct s_node   *next;
 }   t_node;
 typedef struct s_stack
 {
@@ -28,15 +28,15 @@ typedef struct s_stack
     int     size;
 }   t_stack;
 void    ft_push_swap(t_stack **stack_a, t_stack **stack_b);
-void    sa(t_stack **stack_a);
-void    sb(t_stack **stack_b);
-void    ss(t_stack **stack_a, t_stack **stack_b);
+void    sa(t_stack **stack_a, int type_bool);
+void    sb(t_stack **stack_b, int type_bool);
+void    ss(t_stack **stack_a, t_stack **stack_b, int type_bool);
 void    pa(t_stack **stack_a, t_stack **stack_b);
 void    pb(t_stack **stack_a, t_stack **stack_b);
-void    ra(t_stack **stack_a);
-void    rb(t_stack **stack_b);
-void    rr(t_stack **stack_a, t_stack **stack_b);
-void    rra(t_stack **stack_a);
-void    rrb(t_stack **stack_b);
-void    rrr(t_stack **stack_a, t_stack **stack_b);
+void    ra(t_stack **stack_a, int type_bool);
+void    rb(t_stack **stack_b, int type_bool);
+void    rr(t_stack **stack_a, t_stack **stack_b, int type_bool);
+void    rra(t_stack **stack_a, int type_bool);
+void    rrb(t_stack **stack_b, int type_bool);
+void    rrr(t_stack **stack_a, t_stack **stack_b, int type_bool);
 #endif
