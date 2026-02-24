@@ -17,7 +17,7 @@ SRCS        = main.c \
 			  ft_method_rotate.c \
 			  ft_method_swap.c \
 			  ft_push_swap.c \
-			  ft_stack_tools.c
+			  ft_stack_tools.c 
 			  
 SRC_PRE     = $(addprefix $(SRC_DIR)/, $(SRCS))
 

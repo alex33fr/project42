@@ -1,37 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aprivalo <aprivalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/15 11:30:38 by aprivalo          #+#    #+#             */
-/*   Updated: 2026/02/24 14:12:13 by aprivalo         ###   ########.fr       */
+/*   Created: 2026/02/24 14:49:14 by aprivalo          #+#    #+#             */
+/*   Updated: 2026/02/24 15:02:56 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-
-int main(int ac, char **av)
+long	ft_atol(const char *s)
 {
-    t_stack	*s_sa;
-	t_stack	*s_sb;
-    int value;
+	int		i;
+	int		sign;
+	long	result;
 
-    value = 0;
-    if (ac > 2)
-    {
-        value = ft_check_input_av(ac, av);
-        if (value == 1)
-            ft_push_swap(ac, av);
-        else
-            ft_printf("Error 2\n");
-        return (1);
-    }
-    else
-    {
-        ft_printf("Error 1\n");
-        return (1);
-    }   
-    return (0);
+	i = 0;
+	sign = 1;
+	result = 0;
+	while ((s[i] >= '\t' && s[i] <= '\r') || s[i] == ' ')
+		i++;
+	if (s[i] == '-' || s[i] == '+')
+	{
+		if (s[i] == '-')
+			sign = -1;
+		i++;
+	}
+	while (s[i] >= '0' && s[i] <= '9')
+	{
+		result = (result * 10) + (s[i] - '0');
+		i++;
+	}
+	return (result * sign);
 }

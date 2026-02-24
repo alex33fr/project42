@@ -6,7 +6,7 @@
 /*   By: aprivalo <aprivalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/15 11:46:18 by aprivalo          #+#    #+#             */
-/*   Updated: 2026/02/23 18:18:57 by aprivalo         ###   ########.fr       */
+/*   Updated: 2026/02/24 14:35:31 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,6 @@ void    rr(t_stack **stack_a, t_stack **stack_b, int type_bool);
 void    rra(t_stack **stack_a, int type_bool);
 void    rrb(t_stack **stack_b, int type_bool);
 void    rrr(t_stack **stack_a, t_stack **stack_b, int type_bool);
+int ft_check_input_av(int ac, char **s);
+void  ft_split_stack(int ac, char **s);
 #endif

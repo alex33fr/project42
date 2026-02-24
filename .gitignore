@@ -6,7 +6,7 @@
 #    By: aprivalo <aprivalo@student.42angouleme.fr  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/25 14:07:41 by aprivalo          #+#    #+#              #
-#    Updated: 2026/02/02 10:57:09 by aprivalo         ###   ########.fr        #
+#    Updated: 2026/02/24 15:06:29 by aprivalo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 # Binaries
@@ -27,6 +27,9 @@ obj/
 # so_long specific
 so_long/so_long
 so_long/.vscode/
+
+# push_swap
+push_swap/libft
 
 # MLX
 minilibx-linux/libmlx.a

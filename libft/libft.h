@@ -6,7 +6,7 @@
 /*   By: aprivalo <aprivalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/25 14:43:46 by aprivalo          #+#    #+#             */
-/*   Updated: 2026/02/19 12:37:34 by aprivalo         ###   ########.fr       */
+/*   Updated: 2026/02/24 15:04:29 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,4 +70,5 @@ void			ft_putnbr_fd(int n, int fd);
 char			*get_next_line(int fd);
 unsigned int	ft_int_len_un(unsigned int n);
 int				ft_int_len(int n);
+long			ft_atol(const char *s);
 #endif

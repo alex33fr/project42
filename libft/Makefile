@@ -51,6 +51,7 @@ SRCS    = ft_isalpha.c \
 	ft_print_string.c \
 	ft_int_len.c \
 	ft_int_len_un.c \
+	ft_atol.c \
 
 OBJS        = $(SRCS:%.c=%.o)
 
