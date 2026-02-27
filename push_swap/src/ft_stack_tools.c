@@ -6,62 +6,78 @@
 /*   By: aprivalo <aprivalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/15 16:29:53 by aprivalo          #+#    #+#             */
-/*   Updated: 2026/02/24 14:45:14 by aprivalo         ###   ########.fr       */
+/*   Updated: 2026/02/26 13:57:07 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void  ft_split_stack(int ac, char **s)
+void	add_to_stack(t_stack *s, int value)
 {
-    char    **tab;
-    int i;
+	t_node	*new;
+	t_node	*tmp;
 
-    i = 1;
-    while (i < ac)
-    {
-        tab = ft_split(s[i], ' ');
-        i++;
-    }
-    
-    free(tab);
-}
-
-int	ft_check_av(char *s)
-{
-	int	i;
-	int	res;
-
-	i = 0;
-	res = 0;
-	while (s[i])
+	new = malloc(sizeof(t_node));
+	if (!new)
+		error_exit(s);
+	new->value = value;
+	new->next = NULL;
+	if (!s->head)
 	{
-		while (s[i] == ' ')
-			i++;
-		if (!s[i])
-			break ;
-		res = 1;
-		if (s[i] == '+' || s[i] == '-')
-			i++;
-		if (!ft_isdigit(s[i]))
-			return (0);
-		while (ft_isdigit(s[i]))
-			i++;
-		if (s[i] && s[i] != ' ')
-			return (0);
+		s->head = new;
+		return ;
 	}
-	return (res);
+	tmp = s->head;
+	while (tmp->next)
+		tmp = tmp->next;
+	tmp->next = new;
 }
-int	ft_check_input_av(int ac, char **av)
-{
-	int	i;
 
-	i = 1;
-	while (i < ac)
+void	free_stack(t_stack *s)
+{
+	t_node	*tmp;
+
+	while (s->head)
 	{
-		if (!ft_check_av(av[i]))
-			return (0);
+		tmp = s->head;
+		s->head = s->head->next;
+		free(tmp);
+	}
+}
+
+int	stack_size(t_stack *s)
+{
+	t_node	*tmp;
+	int		i;
+
+	tmp = s->head;
+	i = 0;
+	while (tmp)
+	{
 		i++;
+		tmp = tmp->next;
+	}
+	return (i);
+}
+
+int	is_sorted(t_stack *s)
+{
+	t_node	*tmp;
+
+	tmp = s->head;
+	while (tmp && tmp->next)
+	{
+		if (tmp->value > tmp->next->value)
+			return (0);
+		tmp = tmp->next;
 	}
 	return (1);
+}
+
+void	error_exit(t_stack *stack_a)
+{
+	if (stack_a)
+		free_stack(stack_a);
+	ft_printf("Error\n");
+	exit(1);
 }

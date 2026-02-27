@@ -11,14 +11,17 @@ INCLUDES    = -Iincludes -I$(LIBFT_DIR)
 
 SRC_DIR     = src
 SRCS        = main.c \
-			  ft_algo.c \
 			  ft_method_push.c \
-			  ft_method_rotate_reverse.c \
+			  ft_method_reverse_rotate.c \
 			  ft_method_rotate.c \
 			  ft_method_swap.c \
 			  ft_push_swap.c \
-			  ft_stack_tools.c 
-			  
+			  ft_stack_tools.c \
+			  ft_stack_tools2.c \
+			  ft_algo_small_nbr.c \
+			  ft_algo_turc1.c \
+			  ft_algo_turc2.c \
+			  ft_algo_turc3.c
 SRC_PRE     = $(addprefix $(SRC_DIR)/, $(SRCS))
 
 OBJ_DIR     = obj
