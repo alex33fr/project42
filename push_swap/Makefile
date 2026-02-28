@@ -1,11 +1,14 @@
 NAME        = push_swap
 
 CC          = cc
-CFLAGS      = -Wall -Wextra -Werror -g
+CFLAGS      = -Wall -Wextra -Werror
 
 LIBFT_DIR   = libft
 LIBFT_LIB   = $(LIBFT_DIR)/libft.a
 LIBFT_REPO  = https://github.com/alex33fr/project42.git
+
+CHECKER_URL = https://cdn.intra.42.fr/document/document/44055/checker_linux
+CHECKER     = checker_linux
 
 INCLUDES    = -Iincludes -I$(LIBFT_DIR)
 
@@ -22,59 +25,60 @@ SRCS        = main.c \
 			  ft_algo_turc1.c \
 			  ft_algo_turc2.c \
 			  ft_algo_turc3.c
-SRC_PRE     = $(addprefix $(SRC_DIR)/, $(SRCS))
 
 OBJ_DIR     = obj
-OBJS        = $(SRC_PRE:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
+OBJS        = $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
 
-GREEN=\033[0;32m
-RED=\033[0;31m
-RESET=\033[0m
+TOTAL_FILES := $(words $(SRCS))
+COUNT = 0
 
-all:
-	@printf "\r$(GREEN)[  0%%] Initialisation$(RESET)"
-	@$(MAKE) $(NAME)
+GREEN = \033[0;32m
+BLUE  = \033[0;34m
+RED   = \033[0;31m
+RESET = \033[0m
+
+all: $(CHECKER) $(NAME)
 
 $(NAME): $(LIBFT_LIB) $(OBJS)
-	@printf "\r$(GREEN)[ 90%%] Edition des liens$(RESET)          "
-	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT_LIB) -o $(NAME) \
-	|| (printf "\n$(RED)Erreur edition des liens$(RESET)\n"; exit 1)
-	@printf "\r$(GREEN)[100%%] Build termine : $(NAME)$(RESET)\n"
+	@printf "\r$(GREEN)[Linking]$(RESET)                     "
+	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT_LIB) -o $(NAME) || (printf "\n$(RED)Link error$(RESET)\n"; exit 1)
+	@printf "\r$(GREEN)[100%%] $(NAME) ready [OK]$(RESET)\n"
 
 $(LIBFT_LIB):
-	@printf "\r$(GREEN)[ 40%%] Libft$(RESET)                       "
 	@if [ ! -d "$(LIBFT_DIR)" ]; then \
-		git clone $(LIBFT_REPO) tmp_libft >/dev/null 2>&1 \
-		|| (printf "\n$(RED)Erreur clone Libft$(RESET)\n"; exit 1); \
+		git clone $(LIBFT_REPO) tmp_libft >/dev/null 2>&1 || exit 1; \
 		mv tmp_libft/libft $(LIBFT_DIR); \
 		rm -rf tmp_libft; \
 	fi
-	@$(MAKE) -C $(LIBFT_DIR) >/dev/null 2>&1 \
-	|| (printf "\n$(RED)Erreur compilation Libft$(RESET)\n"; exit 1)
+	@$(MAKE) -C $(LIBFT_DIR) >/dev/null 2>&1 || exit 1
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
-	@printf "\r$(GREEN)[ 70%%] %s$(RESET)                      " "$<"
-	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@ \
-	|| (printf "\n$(RED)Erreur compilation %s$(RESET)\n" "$<"; exit 1)
+	@$(eval COUNT=$(shell echo $$(($(COUNT)+1))))
+	@PERCENT=$$(($(COUNT)*100/$(TOTAL_FILES))); \
+	printf "\r$(GREEN)[%3d%%] %-30s$(RESET)" $$PERCENT "$<"; \
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@ || exit 1
 
 $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
 
+$(CHECKER):
+	@if [ ! -f "$(CHECKER)" ]; then \
+		printf "$(BLUE)Downloading checker_linux $(RESET)\n"; \
+		curl -s $(CHECKER_URL) -o $(CHECKER) || exit 1; \
+		chmod +x $(CHECKER); \
+	fi
+
 clean:
-	@printf "\r$(GREEN)[  0%%] Nettoyage$(RESET)                  "
 	@rm -rf $(OBJ_DIR)
 	@if [ -d "$(LIBFT_DIR)" ]; then $(MAKE) -C $(LIBFT_DIR) clean >/dev/null 2>&1; fi
-	@printf "\r$(GREEN)[100%%] Nettoyage termine$(RESET)\n"
+	@printf "$(GREEN)Clean [OK]$(RESET)\n"
 
 fclean: clean
-	@printf "\r$(GREEN)[ 50%%] Suppression$(RESET)       "
 	@rm -f $(NAME)
+	@rm -f $(CHECKER)
 	@rm -rf $(LIBFT_DIR)
-	@printf "\r$(GREEN)[100%%] Fclean termine$(RESET)\n"
+	@printf "$(GREEN)Fclean [OK]$(RESET)\n"
 
-re:
-	@printf "\r$(GREEN)[  0%%] Reconstruction$(RESET)             "
-	@$(MAKE) clean
-	@$(MAKE) all
+re: fclean all
 
 .PHONY: all clean fclean re
