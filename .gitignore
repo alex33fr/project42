@@ -6,7 +6,7 @@
 #    By: aprivalo <aprivalo@student.42angouleme.fr  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/25 14:07:41 by aprivalo          #+#    #+#              #
-#    Updated: 2026/02/24 15:06:29 by aprivalo         ###   ########.fr        #
+#    Updated: 2026/03/01 16:43:31 by aprivalo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 # Binaries
@@ -30,6 +30,12 @@ so_long/.vscode/
 
 # push_swap
 push_swap/libft
+push_swap/checker_linux
+push_swap/push_swap
+
+# pipex
+pipex/libft
+pipex/pipex
 
 # MLX
 minilibx-linux/libmlx.a
