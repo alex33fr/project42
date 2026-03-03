@@ -1,13 +1,14 @@
+This project hab been created as part of the 42 curriculum by <aprivalov>
 # so_long
 
-A 2D graphical game project developed as part of the 42 curriculum, using MiniLibX.
+A 2D graphical game project developed with MiniLibX.
 
-The player must collect all items on the map and then reach the exit.  
+The player must collect all items on the map and then reach the exit.
 Each move is counted and displayed in the terminal.
 
 ## Controls (keyboard QWERTY)
-Move the player: [W] [A] [S] [D]  
-or using arrow keys: Up, Down, Left, Right  
+Move the player: [W] [A] [S] [D]
+or using arrow keys: Up, Down, Left, Right
 
 Quit the game: ESC or window close button
 
