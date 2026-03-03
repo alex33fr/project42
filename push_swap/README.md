@@ -1,4 +1,4 @@
-*This project has been created as part of the 42 curriculum by <aprivalo>.*
+*This project has been created as part of the 42 curriculum by aprivalo.*
 #
 **PUSH_SWAP**
 #
@@ -144,10 +144,10 @@ ARG="4 67 3 87 23"
 ```
 Result: 9
 
-Using a checker:
+Using a checker_linux:
 
 ```bash
-./push_swap $ARG | ./checker $ARG
+./push_swap $ARG | ./checker_linux $ARG
 ```
 Result: OK
 

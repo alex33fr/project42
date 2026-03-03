@@ -1,4 +1,4 @@
-*This project hab been created as part of the 42 curriculum by <aprivalov>.*
+*This project hab been created as part of the 42 curriculum by aprivalo.*
 # so_long
 
 A 2D graphical game project developed with MiniLibX.
@@ -27,7 +27,7 @@ A valid map must:
 make
 ```
 ## Run the game
-./so_long map_mini_valid.ber
+./so_long map_valid_mini.ber
 
 ## Cleanup After Compilation
 ```zsh
