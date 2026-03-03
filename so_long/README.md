@@ -27,8 +27,9 @@ A valid map must:
 make
 ```
 ## Run the game
+```zsh
 ./so_long map_valid_mini.ber
-
+```
 ## Cleanup After Compilation
 ```zsh
 make clean
