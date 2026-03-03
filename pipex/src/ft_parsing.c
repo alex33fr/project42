@@ -1,13 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   ft_parsing.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aprivalo <aprivalo@student.42angouleme.fr  +#+  +:+       +#+        */
+/*   By: aprivalo <aprivalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/01 16:20:29 by aprivalo          #+#    #+#             */
-/*   Updated: 2026/03/01 16:20:42 by aprivalo         ###   ########.fr       */
+/*   Updated: 2026/03/02 11:19:14 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "pipex.h"
+
+char	**parse_cmd(char *cmd)
+{
+}
+
+void	free_tab(char **tab)
+{
+}

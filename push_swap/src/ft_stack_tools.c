@@ -6,7 +6,7 @@
 /*   By: aprivalo <aprivalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/15 16:29:53 by aprivalo          #+#    #+#             */
-/*   Updated: 2026/02/26 13:57:07 by aprivalo         ###   ########.fr       */
+/*   Updated: 2026/03/03 12:32:59 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,6 @@ void	error_exit(t_stack *stack_a)
 {
 	if (stack_a)
 		free_stack(stack_a);
-	ft_printf("Error\n");
+	ft_putstr_fd("Error\n", 2);
 	exit(1);
 }
