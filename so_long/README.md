@@ -1,4 +1,4 @@
-This project hab been created as part of the 42 curriculum by <aprivalov>
+*This project hab been created as part of the 42 curriculum by <aprivalov>.*
 # so_long
 
 A 2D graphical game project developed with MiniLibX.
