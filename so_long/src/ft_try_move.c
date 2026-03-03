@@ -6,7 +6,7 @@
 /*   By: aprivalo <aprivalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 10:45:46 by aprivalo          #+#    #+#             */
-/*   Updated: 2026/02/20 01:03:40 by aprivalo         ###   ########.fr       */
+/*   Updated: 2026/03/03 17:49:55 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,20 +21,17 @@ static void	ft_handle_tile(t_game *g, int nx, int ny)
 	}
 	if (g->map[nx][ny] == 'E')
 	{
-		if (g->picked_pickaxes > 0
-			&& g->used_pickaxes < g->total_pickaxes)
+		if (g->picked_pickaxes > 0 && g->used_pickaxes < g->total_pickaxes)
 		{
 			g->picked_pickaxes--;
 			g->used_pickaxes++;
-			g->gate_state = (g->used_pickaxes * 4)
-				/ g->total_pickaxes;
+			g->gate_state = (g->used_pickaxes * 4) / g->total_pickaxes;
 			if (g->gate_state < 1)
 				g->gate_state = 1;
 			if (g->gate_state > 4)
 				g->gate_state = 4;
 		}
-		else if (g->used_pickaxes == g->total_pickaxes
-			&& g->gate_state == 4)
+		else if (g->used_pickaxes == g->total_pickaxes && g->gate_state == 4)
 			ft_win(g);
 	}
 }
