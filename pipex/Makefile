@@ -11,8 +11,7 @@ INCLUDES    = -Iincludes -I$(LIBFT_DIR)
 
 SRC_DIR     = src
 SRCS        = main.c \
-			ft_parsing.c \
-			ft_exec.c \
+			ft_exec_childs.c \
 			ft_path.c \
 			ft_utils.c
 
