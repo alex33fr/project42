@@ -6,7 +6,7 @@
 /*   By: aprivalo <aprivalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/01 16:15:46 by aprivalo          #+#    #+#             */
-/*   Updated: 2026/03/10 12:03:39 by aprivalo         ###   ########.fr       */
+/*   Updated: 2026/03/10 13:27:17 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static int	ft_try_open_create(t_pipex *pipex, char **av)
 	{
 		perror(av[4]);
 		close(pipex->outfile);
-		return (0);
+		exit(1);
 	}
 	return (1);
 }
@@ -43,9 +43,19 @@ static int	ft_try_open_create(t_pipex *pipex, char **av)
 static void	ft_fork_process(t_pipex *pipex, char **av, char **envp)
 {
 	pipex->pid1 = fork();
+	if (pipex->pid1 < 0)
+	{ 
+		perror("fork"); 
+		exit(1); 
+	}
 	if (pipex->pid1 == 0)
 		ft_child1(pipex, av[2], envp);
 	pipex->pid2 = fork();
+	if (pipex->pid2 < 0)
+	{ 
+		perror("fork"); 
+		exit(1); 
+	}
 	if (pipex->pid2 == 0)
 		ft_child2(pipex, av[3], envp);
 }

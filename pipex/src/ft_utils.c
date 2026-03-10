@@ -6,7 +6,7 @@
 /*   By: aprivalo <aprivalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/01 16:23:50 by aprivalo          #+#    #+#             */
-/*   Updated: 2026/03/10 10:53:43 by aprivalo         ###   ########.fr       */
+/*   Updated: 2026/03/10 13:28:24 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ void	ft_close_fd(int fd1, int fd2)
 
 void	ft_close_files(int file1, int file2)
 {
-	close(file1);
-	close(file2);
+	if (file1 >= 0)
+		close(file1);
+	if (file2 >= 0)
+		close(file2);
 }

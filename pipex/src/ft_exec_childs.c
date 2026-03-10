@@ -6,7 +6,7 @@
 /*   By: aprivalo <aprivalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/01 16:23:03 by aprivalo          #+#    #+#             */
-/*   Updated: 2026/03/10 12:13:11 by aprivalo         ###   ########.fr       */
+/*   Updated: 2026/03/10 13:23:20 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	ft_child1(t_pipex *pipex, char *cmd, char **envp)
 	if (pipex->infile < 0)
         exit(1);
     dup2(pipex->infile, STDIN_FILENO);
+	close(pipex->infile);
 	dup2(pipex->pipefd[1], STDOUT_FILENO);
 	ft_close_fd(pipex->pipefd[0], pipex->pipefd[1]);
 	tab = ft_split(cmd, ' ');
@@ -51,6 +52,7 @@ void	ft_child2(t_pipex *pipex, char *cmd, char **envp)
 		exit(1);
 	dup2(pipex->pipefd[0], STDIN_FILENO);
 	dup2(pipex->outfile, STDOUT_FILENO);
+	close(pipex->outfile);
 	ft_close_fd(pipex->pipefd[0], pipex->pipefd[1]);
 	tab = ft_split(cmd, ' ');
 	if (!tab)
