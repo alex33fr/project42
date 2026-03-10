@@ -6,7 +6,7 @@
 /*   By: aprivalo <aprivalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/01 16:23:25 by aprivalo          #+#    #+#             */
-/*   Updated: 2026/03/10 11:28:18 by aprivalo         ###   ########.fr       */
+/*   Updated: 2026/03/10 15:48:07 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ char	*ft_find_path(char *cmd, char **envp)
 		return (ft_strdup(cmd));
 	paths = ft_get_path_splitted(envp);
 	if (!paths)
-		exit(127);
+		return (NULL);
 	path = ft_search_path(paths, cmd);
 	ft_free_pipex_tab(paths);
 	return (path);
