@@ -6,7 +6,7 @@
 /*   By: aprivalo <aprivalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/01 16:15:46 by aprivalo          #+#    #+#             */
-/*   Updated: 2026/03/08 01:35:32 by aprivalo         ###   ########.fr       */
+/*   Updated: 2026/03/10 12:03:39 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,30 @@
 
 int ft_wait_child(t_pipex *pipex)
 {
-    int status;
+	int status;
 
-    waitpid(pipex->pid1, NULL, 0);
-    waitpid(pipex->pid2, &status, 0);
-    return (status >> 8);
+	waitpid(pipex->pid1, NULL, 0);
+	waitpid(pipex->pid2, &status, 0);
+	return (status >> 8);
 }
 
-static void	ft_try_open_create(t_pipex *pipex, char **av)
+static int	ft_try_open_create(t_pipex *pipex, char **av)
 {
 	pipex->infile = open(av[1], O_RDONLY);
 	if (pipex->infile < 0)
 	{
 		perror(av[1]);
-		pipex->infile = open("/dev/null", O_RDONLY);
+		close(pipex->infile);
+		return (0);
 	}
 	pipex->outfile = open(av[4], O_CREAT | O_TRUNC | O_WRONLY, 0644);
 	if (pipex->outfile < 0)
+	{
 		perror(av[4]);
+		close(pipex->outfile);
+		return (0);
+	}
+	return (1);
 }
 
 static void	ft_fork_process(t_pipex *pipex, char **av, char **envp)
@@ -52,19 +58,23 @@ int	main(int ac, char **av, char **envp)
 	ft_bzero(&pipex, sizeof(t_pipex));
 	if (ac == 5)
 	{
-		ft_try_open_create(&pipex, av);
-		if (pipe(pipex.pipefd) == -1)
-		{
-			perror("pipe");
+		if (ft_try_open_create(&pipex, av) == 0)
 			exit(1);
+		else
+		{
+			if (pipe(pipex.pipefd) == -1)
+			{
+				perror("pipe");
+				exit(1);
+			}
+			ft_fork_process(&pipex, av, envp);
+			ft_close_fd(pipex.pipefd[0],pipex.pipefd[1]);
+			status = ft_wait_child(&pipex);
+			ft_close_files(pipex.infile, pipex.outfile);
+			return (status);
 		}
-		ft_fork_process(&pipex, av, envp);
-		ft_close_fd(pipex.pipefd[0],pipex.pipefd[1]);
-		status = ft_wait_child(&pipex);
-		ft_close_files(pipex.infile, pipex.outfile);
-		return (status);
 	}
 	else
-		ft_putstr_fd("Error : bad args!", 2);
+		ft_putstr_fd("Command not found", 2);
 	return (1);
 }
