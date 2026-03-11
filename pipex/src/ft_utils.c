@@ -6,7 +6,7 @@
 /*   By: aprivalo <aprivalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/01 16:23:50 by aprivalo          #+#    #+#             */
-/*   Updated: 2026/03/10 13:28:24 by aprivalo         ###   ########.fr       */
+/*   Updated: 2026/03/11 14:43:07 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,13 @@ void	ft_close_files(int file1, int file2)
 		close(file1);
 	if (file2 >= 0)
 		close(file2);
+}
+
+int	ft_wait_child(t_pipex *pipex)
+{
+	int	status;
+
+	waitpid(pipex->pid1, NULL, 0);
+	waitpid(pipex->pid2, &status, 0);
+	return (status >> 8);
 }
