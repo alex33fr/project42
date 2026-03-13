@@ -53,9 +53,20 @@ void	do_move(t_stack *stack_a, t_stack *stack_b)
 	best_cost = 2147483647;
 	while (current)
 	{
-		if (ft_abs(current->cost_a) + ft_abs(current->cost_b) < best_cost)
+		int	ca_abs;
+		int	cb_abs;
+		int	effective_cost;
+
+		ca_abs = ft_abs(current->cost_a);
+		cb_abs = ft_abs(current->cost_b);
+		if ((current->cost_a >= 0 && current->cost_b >= 0)
+			|| (current->cost_a <= 0 && current->cost_b <= 0))
+			effective_cost = (ca_abs > cb_abs) ? ca_abs : cb_abs;
+		else
+			effective_cost = ca_abs + cb_abs;
+		if (effective_cost < best_cost)
 		{
-			best_cost = ft_abs(current->cost_a) + ft_abs(current->cost_b);
+			best_cost = effective_cost;
 			best = current;
 		}
 		current = current->next;
