@@ -6,7 +6,7 @@
 /*   By: aprivalo <aprivalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/01 16:23:50 by aprivalo          #+#    #+#             */
-/*   Updated: 2026/03/11 14:43:07 by aprivalo         ###   ########.fr       */
+/*   Updated: 2026/03/13 10:25:31 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,20 +24,12 @@ void	ft_free_pipex_tab(char **tab)
 	free(tab);
 }
 
-void	ft_close_fd(int fd1, int fd2)
+void	ft_close(int in1, int in2)
 {
-	if (fd1 >= 0)
-		close(fd1);
-	if (fd2 >= 0)
-		close(fd2);
-}
-
-void	ft_close_files(int file1, int file2)
-{
-	if (file1 >= 0)
-		close(file1);
-	if (file2 >= 0)
-		close(file2);
+	if (in1 >= 0)
+		close(in1);
+	if (in2 >= 0)
+		close(in2);
 }
 
 int	ft_wait_child(t_pipex *pipex)
