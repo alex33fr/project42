@@ -6,7 +6,7 @@
 /*   By: aprivalo <aprivalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/15 16:30:28 by aprivalo          #+#    #+#             */
-/*   Updated: 2026/03/13 11:45:04 by aprivalo         ###   ########.fr       */
+/*   Updated: 2026/03/13 12:35:44 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,28 +83,4 @@ void	do_move(t_stack *stack_a, t_stack *stack_b)
 	rot_a(&stack_a, &ca);
 	rot_b(&stack_b, &cb);
 	pa(&stack_a, &stack_b);
-}
-
-static int	get_min_pos_index(t_stack *stack_a)
-{
-	t_node	*current;
-	int		min_index;
-	int		min_pos;
-	int		i;
-
-	current = stack_a->head;
-	min_index = current->index;
-	min_pos = 0;
-	i = 0;
-	while (current)
-	{
-		if (current->index < min_index)
-		{
-			min_index = current->index;
-			min_pos = i;
-		}
-		current = current->next;
-		i++;
-	}
-	return (min_pos);
 }

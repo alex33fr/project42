@@ -6,7 +6,7 @@
 /*   By: aprivalo <aprivalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/15 16:28:14 by aprivalo          #+#    #+#             */
-/*   Updated: 2026/03/13 11:44:47 by aprivalo         ###   ########.fr       */
+/*   Updated: 2026/03/13 12:35:38 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,30 @@ void	rr(t_stack **s_sa, t_stack **s_sb, int type_bool)
 		if (type_bool == 1)
 			ft_printf("rr\n");
 	}
+}
+
+static int	get_min_pos_index(t_stack *stack_a)
+{
+	t_node	*current;
+	int		min_index;
+	int		min_pos;
+	int		i;
+
+	current = stack_a->head;
+	min_index = current->index;
+	min_pos = 0;
+	i = 0;
+	while (current)
+	{
+		if (current->index < min_index)
+		{
+			min_index = current->index;
+			min_pos = i;
+		}
+		current = current->next;
+		i++;
+	}
+	return (min_pos);
 }
 
 void	rotate(t_stack *stack_a)
