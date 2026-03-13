@@ -6,7 +6,7 @@
 /*   By: aprivalo <aprivalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/15 16:30:28 by aprivalo          #+#    #+#             */
-/*   Updated: 2026/02/27 14:39:41 by aprivalo         ###   ########.fr       */
+/*   Updated: 2026/03/13 11:45:04 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,23 @@ void	push_all(t_stack *stack_a, t_stack *stack_b)
 	}
 }
 
+static int	get_effective_cost(t_node *node)
+{
+	int	ca_abs;
+	int	cb_abs;
+
+	ca_abs = ft_abs(node->cost_a);
+	cb_abs = ft_abs(node->cost_b);
+	if ((node->cost_a >= 0 && node->cost_b >= 0)
+		|| (node->cost_a <= 0 && node->cost_b <= 0))
+	{
+		if (ca_abs > cb_abs)
+			return (ca_abs);
+		return (cb_abs);
+	}
+	return (ca_abs + cb_abs);
+}
+
 void	do_move(t_stack *stack_a, t_stack *stack_b)
 {
 	t_node	*current;
@@ -53,20 +70,9 @@ void	do_move(t_stack *stack_a, t_stack *stack_b)
 	best_cost = 2147483647;
 	while (current)
 	{
-		int	ca_abs;
-		int	cb_abs;
-		int	effective_cost;
-
-		ca_abs = ft_abs(current->cost_a);
-		cb_abs = ft_abs(current->cost_b);
-		if ((current->cost_a >= 0 && current->cost_b >= 0)
-			|| (current->cost_a <= 0 && current->cost_b <= 0))
-			effective_cost = (ca_abs > cb_abs) ? ca_abs : cb_abs;
-		else
-			effective_cost = ca_abs + cb_abs;
-		if (effective_cost < best_cost)
+		if (get_effective_cost(current) < best_cost)
 		{
-			best_cost = effective_cost;
+			best_cost = get_effective_cost(current);
 			best = current;
 		}
 		current = current->next;
@@ -101,19 +107,4 @@ static int	get_min_pos_index(t_stack *stack_a)
 		i++;
 	}
 	return (min_pos);
-}
-
-void	rotate(t_stack *stack_a)
-{
-	int	min_pos;
-	int	size;
-
-	min_pos = get_min_pos_index(stack_a);
-	size = stack_size(stack_a);
-	if (min_pos <= size / 2)
-		while (min_pos-- > 0)
-			ra(&stack_a, 1);
-	else
-		while (min_pos++ < size)
-			rra(&stack_a, 1);
 }
