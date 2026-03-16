@@ -2,7 +2,7 @@ NAME        = philo
 
 CC          = cc
 CFLAGS      = -Wall -Wextra -Werror -g
-
+LDFLAGS	= -pthread
 INCLUDES    = -Iincludes
 
 SRC_DIR     = src
@@ -23,7 +23,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	@printf "\r$(GREEN)[Linking]$(RESET)                     "
-	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME) || (printf "\n$(RED)Link error$(RESET)\n"; exit 1)
+	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LDFLAGS) || (printf "\n$(RED)Link error$(RESET)\n"; exit 1)
 	@printf "\r$(GREEN)[100%%] $(NAME) ready [OK]$(RESET)\n"
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
