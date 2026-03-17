@@ -6,13 +6,13 @@
 /*   By: aprivalo <aprivalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/01 16:23:25 by aprivalo          #+#    #+#             */
-/*   Updated: 2026/03/10 15:48:07 by aprivalo         ###   ########.fr       */
+/*   Updated: 2026/03/16 17:20:59 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-char	**ft_get_path_splitted(char **envp)
+static char	**ft_get_path_splitted(char **envp)
 {
 	char	**envp_s;
 	int		i;
@@ -74,11 +74,15 @@ char	*ft_find_path(char *cmd, char **envp)
 {
 	char	*path;
 	char	**paths;
+	char	*res;
 
 	if (!cmd)
 		return (NULL);
 	if (ft_strchr(cmd, '/'))
-		return (ft_strdup(cmd));
+	{
+		res = ft_strdup(cmd);
+		return (res);
+	}
 	paths = ft_get_path_splitted(envp);
 	if (!paths)
 		return (NULL);

@@ -6,7 +6,7 @@
 /*   By: aprivalo <aprivalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/01 16:23:03 by aprivalo          #+#    #+#             */
-/*   Updated: 2026/03/10 15:47:30 by aprivalo         ###   ########.fr       */
+/*   Updated: 2026/03/16 15:52:22 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,16 @@
 
 static void	ft_exec_child(char *path, char **tab, char **envp)
 {
+	int	exists;
+
 	execve(path, tab, envp);
 	perror(tab[0]);
+	exists = (access(path, F_OK) == 0);
 	free(path);
 	ft_free_pipex_tab(tab);
+	if (exists)
+		exit(126);
+	exit(127);
 }
 
 static char	*ft_get_path(char **tab, char **envp)
@@ -43,20 +49,21 @@ void	ft_child1(t_pipex *pipex, char *cmd, char **envp)
 	if (pipex->infile < 0)
 	{
 		ft_close(pipex->pipefd[0], pipex->pipefd[1]);
-		close(pipex->outfile);
+		if (pipex->outfile > 2)
+			close(pipex->outfile);
 		exit(1);
 	}
 	dup2(pipex->infile, STDIN_FILENO);
 	close(pipex->infile);
 	dup2(pipex->pipefd[1], STDOUT_FILENO);
 	ft_close(pipex->pipefd[0], pipex->pipefd[1]);
-	close(pipex->outfile);
+	if (pipex->outfile > 2)
+		close(pipex->outfile);
 	tab = ft_split(cmd, ' ');
 	if (!tab)
 		exit(1);
 	path = ft_get_path(tab, envp);
 	ft_exec_child(path, tab, envp);
-	exit(1);
 }
 
 void	ft_child2(t_pipex *pipex, char *cmd, char **envp)
@@ -67,18 +74,19 @@ void	ft_child2(t_pipex *pipex, char *cmd, char **envp)
 	if (pipex->outfile < 0)
 	{
 		ft_close(pipex->pipefd[0], pipex->pipefd[1]);
-		close(pipex->infile);
+		if (pipex->infile > 2)
+			close(pipex->infile);
 		exit(1);
 	}
 	dup2(pipex->pipefd[0], STDIN_FILENO);
 	dup2(pipex->outfile, STDOUT_FILENO);
 	close(pipex->outfile);
 	ft_close(pipex->pipefd[0], pipex->pipefd[1]);
-	close(pipex->infile);
+	if (pipex->infile > 2)
+		close(pipex->infile);
 	tab = ft_split(cmd, ' ');
 	if (!tab)
 		exit(1);
 	path = ft_get_path(tab, envp);
 	ft_exec_child(path, tab, envp);
-	exit(1);
 }

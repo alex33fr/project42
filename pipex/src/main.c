@@ -33,7 +33,10 @@ static void	ft_open_process(t_pipex *pipex, char **av)
 	if (pipe(pipex->pipefd) == -1)
 	{
 		perror("pipe");
-		ft_close(pipex->infile, pipex->outfile);
+		if (pipex->infile > 2)
+			ft_close(pipex->infile, -1);
+		if (pipex->outfile > 2)
+			ft_close(pipex->outfile, -1);
 		exit(1);
 	}
 }
@@ -70,7 +73,10 @@ int	main(int ac, char **av, char **envp)
 		ft_fork_process(&pipex, av, envp);
 		ft_close(pipex.pipefd[0], pipex.pipefd[1]);
 		status = ft_wait_child(&pipex);
-		ft_close(pipex.infile, pipex.outfile);
+		if (pipex.infile > 2)
+			ft_close(pipex.infile, -1);
+		if (pipex.outfile > 2)
+			ft_close(pipex.outfile, -1);
 		return (status);
 	}
 	else
