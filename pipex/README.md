@@ -2,7 +2,6 @@
 
 # Pipex
 
-
 ## Description
 
 Pipex is a project from the 42 school whose objective
@@ -41,13 +40,13 @@ The program must:
 Equivalent command in the shell:
 
 ```bash
-< infile grep a1 | wc -w > outfile
+< infile cat -e | wc -l > outfile
 ```
 
 Execution with pipex:
 
 ```bash
-./pipex infile "grep a1" "wc -w" outfile
+./pipex infile "cat -e" "wc -l" outfile
 ```
 
 
@@ -69,13 +68,13 @@ make re
 ```
 
 
-### Resources
+## Resources
 
 The following resources were used to complete this project:
 
 * manual pages (`man`)
 * Unix documentation about pipes and file descriptors
 * explanatory videos on YouTube about pipes and `execve`
-* my personal **libft** library
+* my personal *libft* library
 * use of AI to deepen understanding of some complex concepts and
   to better understand certain shell behaviors during testing
