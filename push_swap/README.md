@@ -1,30 +1,33 @@
-*This project has been created as part of the 42 curriculum by aprivalo.*
+*This project has been created as part of the 42 curriculum by aprivalo*
 #
 **PUSH_SWAP**
 #
 
-push_swap is an algorithmic project from 42 School.
-The objective is to sort a stack of integers using the minimum number of operations, with only two stacks and a restricted set of instructions.
+##
+Description
+##
 
-##
+Push_swap is an algorithmic project from 42 School.
+The objective is to sort a stack of integers using the minimum number
+of operations, with only two stacks and a restricted set of instructions.
+
+###
 This project focuses on:
-##
+###
 
 1. Sorting algorithms
 2. Optimization
 3. Data structures (linked lists)
 4. Algorithmic complexity
 
-##
-Objective:
-##
+Sort a list of integers given as arguments using only the
+allowed operations.
+The program must print on the standard output the sequence of
+operations required to sort the stack in ascending order.
 
-Sort a list of integers given as arguments using only the allowed operations.
-The program must print on the standard output the sequence of operations required to sort the stack in ascending order.
-
-##
+###
 Allowed operations:
-##
+###
 
 ###
 Swap (ft_method_swap.c)
@@ -60,7 +63,7 @@ rrr : execute rra and rrb at the same time
 ###
 
 ##
-Compilation:
+Instructions:
 ##
 
 Compile the project:
@@ -87,9 +90,9 @@ Recompile everything:
 make re
 ```
 
-##
+###
 Usage
-##
+###
 
 Example:
 
@@ -99,9 +102,9 @@ Example:
 
 The program will output the sequence of operations needed to sort the numbers.
 
-##
+###
 Turk Algorithm Principle:
-##
+###
 
 * Index assignment
 * Position calculation
@@ -110,9 +113,9 @@ Turk Algorithm Principle:
 * Optimized rotations (Turk algorithm approach)
 * Error management
 
-##
+###
 The program handles:
-##
+###
 
 * Invalid characters
 * Non-numeric inputs
@@ -121,9 +124,9 @@ The program handles:
 * Empty arguments
 * In case of error, the program prints: Error
 
-##
+###
 Performance objectives:
-##
+###
 
 | Number of elements | Number of operations |
 | ------------------ | -------------------- |
@@ -132,9 +135,9 @@ Performance objectives:
 | 100                | ≤ 700                |
 | 500                | ≤ 5500               |
 
-##
-**Run/Tests**
-##
+###
+Run/Tests
+###
 
 Simple example:
 
@@ -151,5 +154,36 @@ Using a checker_linux:
 ```
 Result: OK
 
+Test with random mixed numbers:
+```bash
+ARG=$(shuf -i 0-100 -n 100 | tr '\n' ' '); ./push_swap $ARG | ./checker_linux $ARG
+```
 PS: The libft is already included in the Makefile and will be compiled automatically.
-To verify correct behavior, you must add `checker_linux` + rights ```bash chmod +x checker_linux``` , to compare the results properly.
+To verify correct behavior, you must add `checker_linux` + rights
+```bash chmod +x checker_linux``` , to compare the results properly.
+
+##
+Resources:
+##
+
+To complete this project, I relied on various resources,
+including specialized guides and educational materials to deepen my understanding
+of sorting algorithms and data structures. The resources used include:
+
+Tutorials :
+            1. https://pure-forest.medium.com/push-swap-turk-algorithm-explained-in-6-steps-4c6650a458c0
+            2. https://42-cursus.gitbook.io/guide/2-rank-02/push_swap
+            3. https://www.marcioflavio.com/push_swap-the-algorithmic-challenge-of-sorting/
+            4. https://chgi.developpez.com/liste/
+
+Tester :
+            1. https://gitlab.com/nda-cunh/push_swap-testeur-max
+            2.
+                ```bash
+                ARG=$(shuf -i 0-100 -n 100 | tr '\n' ' '); ./push_swap $ARG | ./checker_linux $ARG
+                ```
+
+YouTube videos were also used to better visualize key concepts,
+especially sorting algorithms and linked lists, which I initially struggled to understand.
+Finally, artificial intelligence was used to help debug complex cases and
+simulate problems related to linked lists for practice, improving the overall reliability of the project.
