@@ -6,12 +6,15 @@
 /*   By: aprivalo <aprivalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/15 16:29:53 by aprivalo          #+#    #+#             */
-/*   Updated: 2026/03/03 12:32:59 by aprivalo         ###   ########.fr       */
+/*   Updated: 2026/03/19 16:08:14 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+/**
+ *  Append new node at the bottom of the stack
+ */
 void	add_to_stack(t_stack *s, int value)
 {
 	t_node	*new;
@@ -33,6 +36,9 @@ void	add_to_stack(t_stack *s, int value)
 	tmp->next = new;
 }
 
+/**
+ *  Free all nodes
+ */
 void	free_stack(t_stack *s)
 {
 	t_node	*tmp;
@@ -45,6 +51,9 @@ void	free_stack(t_stack *s)
 	}
 }
 
+/**
+ *  Returns nb nodes in the stack
+ */
 int	stack_size(t_stack *s)
 {
 	t_node	*tmp;
@@ -60,6 +69,9 @@ int	stack_size(t_stack *s)
 	return (i);
 }
 
+/**
+ *  Returns 1 if sorted ascending, 0 otherwise
+ */
 int	is_sorted(t_stack *s)
 {
 	t_node	*tmp;

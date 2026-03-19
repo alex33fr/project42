@@ -6,12 +6,15 @@
 /*   By: aprivalo <aprivalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/15 12:07:05 by aprivalo          #+#    #+#             */
-/*   Updated: 2026/02/27 11:12:36 by aprivalo         ###   ########.fr       */
+/*   Updated: 2026/03/19 16:05:33 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+/**
+ *  Returns position min in stack_a
+ */
 static int	get_min_pos(t_stack *stack_a)
 {
 	t_node	*tmp;
@@ -36,6 +39,9 @@ static int	get_min_pos(t_stack *stack_a)
 	return (pos);
 }
 
+/**
+ *  Rotate stack_a until min is on top
+ */
 void	bring_min_top(t_stack **stack_a)
 {
 	int	pos;
@@ -51,7 +57,10 @@ void	bring_min_top(t_stack **stack_a)
 			rra(stack_a, 1);
 }
 
-void	turk_sort(t_stack *stack_a, t_stack *stack_b)
+/**
+ *  Turkish sort 6+ args
+ */
+static void	turk_sort(t_stack *stack_a, t_stack *stack_b)
 {
 	set_index(stack_a);
 	push_all(stack_a, stack_b);

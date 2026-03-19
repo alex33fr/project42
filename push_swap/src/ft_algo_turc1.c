@@ -12,6 +12,9 @@
 
 #include "push_swap.h"
 
+/**
+ *  Apply rr/rrr while both costs share the same sign
+ */
 static void	rot_both(t_stack **stack_a, t_stack **stack_b, int *ca, int *cb)
 {
 	while (*ca > 0 && *cb > 0)
@@ -28,6 +31,9 @@ static void	rot_both(t_stack **stack_a, t_stack **stack_b, int *ca, int *cb)
 	}
 }
 
+/**
+ *  Push all to B, leaving 3 in A
+ */
 void	push_all(t_stack *stack_a, t_stack *stack_b)
 {
 	int	size;
@@ -40,6 +46,9 @@ void	push_all(t_stack *stack_a, t_stack *stack_b)
 	}
 }
 
+/**
+ *  Returns effective operation count to insert this node
+ */
 static int	get_effective_cost(t_node *node)
 {
 	int	ca_abs;
@@ -57,6 +66,9 @@ static int	get_effective_cost(t_node *node)
 	return (ca_abs + cb_abs);
 }
 
+/**
+ *  Insert cheapest B node into A
+ */
 void	do_move(t_stack *stack_a, t_stack *stack_b)
 {
 	t_node	*current;

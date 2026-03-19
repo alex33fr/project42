@@ -12,6 +12,9 @@
 
 #include "push_swap.h"
 
+/**
+ *  Returns absolute value of x
+ */
 int	ft_abs(int x)
 {
 	if (x < 0)
@@ -19,6 +22,9 @@ int	ft_abs(int x)
 	return (x);
 }
 
+/**
+ *  Rotate A by cost_a steps
+ */
 void	rot_a(t_stack **stack_a, int *ca)
 {
 	while (*ca > 0)
@@ -33,6 +39,9 @@ void	rot_a(t_stack **stack_a, int *ca)
 	}
 }
 
+/**
+ *  Rotate B by cost_b steps
+ */
 void	rot_b(t_stack **stack_b, int *cb)
 {
 	while (*cb > 0)

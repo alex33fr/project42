@@ -6,12 +6,15 @@
 /*   By: aprivalo <aprivalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/15 16:28:54 by aprivalo          #+#    #+#             */
-/*   Updated: 2026/02/25 17:24:59 by aprivalo         ###   ########.fr       */
+/*   Updated: 2026/03/19 16:07:09 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+/**
+ *  Move bottom of A to the top
+ */
 void	rra(t_stack **s_sa, int type_bool)
 {
 	t_node	*first;
@@ -36,6 +39,9 @@ void	rra(t_stack **s_sa, int type_bool)
 	}
 }
 
+/**
+ *  Move bottom of B to the top
+ */
 void	rrb(t_stack **s_sb, int type_bool)
 {
 	t_node	*first;
@@ -60,6 +66,9 @@ void	rrb(t_stack **s_sb, int type_bool)
 	}
 }
 
+/**
+ *  Reverse both stacks
+ */
 void	rrr(t_stack **s_sa, t_stack **s_sb, int type_bool)
 {
 	if (*s_sa && *s_sb && ((*s_sa)->head

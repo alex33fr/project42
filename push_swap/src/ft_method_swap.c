@@ -6,12 +6,15 @@
 /*   By: aprivalo <aprivalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/15 16:26:58 by aprivalo          #+#    #+#             */
-/*   Updated: 2026/02/25 17:19:17 by aprivalo         ###   ########.fr       */
+/*   Updated: 2026/03/19 16:04:18 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+/**
+ *  Swap top two of A
+ */
 void	sa(t_stack **s_sa, int type_bool)
 {
 	t_node	*first;
@@ -29,6 +32,9 @@ void	sa(t_stack **s_sa, int type_bool)
 	}
 }
 
+/**
+ *  Swap top two of B
+ */
 void	sb(t_stack **s_sb, int type_bool)
 {
 	t_node	*first;
@@ -46,6 +52,9 @@ void	sb(t_stack **s_sb, int type_bool)
 	}
 }
 
+/**
+ *  Swap top two of both stacks
+ */
 void	ss(t_stack **s_sa, t_stack **s_sb, int type_bool)
 {
 	if (*s_sa && *s_sb

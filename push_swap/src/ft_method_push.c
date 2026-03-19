@@ -12,6 +12,9 @@
 
 #include "push_swap.h"
 
+/**
+ *  Push top of B onto A
+ */
 void	pa(t_stack **s_sa, t_stack **s_sb)
 {
 	t_node	*tmp;
@@ -25,6 +28,9 @@ void	pa(t_stack **s_sa, t_stack **s_sb)
 	ft_printf("pa\n");
 }
 
+/**
+ *  Push top of A onto B
+ */
 void	pb(t_stack **s_sa, t_stack **s_sb)
 {
 	t_node	*tmp;

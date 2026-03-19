@@ -12,6 +12,9 @@
 
 #include "push_swap.h"
 
+/**
+ *  Move top of A to the bottom
+ */
 void	ra(t_stack **s_sa, int type_bool)
 {
 	t_node	*first;
@@ -31,6 +34,9 @@ void	ra(t_stack **s_sa, int type_bool)
 	}
 }
 
+/**
+ *  Move top of B to the bottom
+ */
 void	rb(t_stack **s_sb, int type_bool)
 {
 	t_node	*first;
@@ -50,6 +56,9 @@ void	rb(t_stack **s_sb, int type_bool)
 	}
 }
 
+/**
+ *  Rotate both stacks up
+ */
 void	rr(t_stack **s_sa, t_stack **s_sb, int type_bool)
 {
 	if (*s_sa && *s_sb && ((*s_sa)->head
@@ -62,6 +71,9 @@ void	rr(t_stack **s_sa, t_stack **s_sb, int type_bool)
 	}
 }
 
+/**
+ *  Returns position of lowest index node in stack_a
+ */
 static int	get_min_pos_index(t_stack *stack_a)
 {
 	t_node	*current;
@@ -86,6 +98,9 @@ static int	get_min_pos_index(t_stack *stack_a)
 	return (min_pos);
 }
 
+/**
+ *  Rotate A until smallest index is on top
+ */
 void	rotate(t_stack *stack_a)
 {
 	int	min_pos;

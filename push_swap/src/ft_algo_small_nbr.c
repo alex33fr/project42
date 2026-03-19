@@ -12,12 +12,18 @@
 
 #include "push_swap.h"
 
+/**
+ *  Sort 2 elements
+ */
 void	sort_two(t_stack *stack_a)
 {
 	if (stack_a->head->value > stack_a->head->next->value)
 		sa(&stack_a, 1);
 }
 
+/**
+ *  Sort 3 elements in at most 2 moves
+ */
 void	sort_three(t_stack *stack_a)
 {
 	int	a;
@@ -45,6 +51,9 @@ void	sort_three(t_stack *stack_a)
 		rra(&stack_a, 1);
 }
 
+/**
+ *  Sort 4: push min to B, sort 3, pull back
+ */
 void	sort_four(t_stack *stack_a, t_stack *stack_b)
 {
 	bring_min_top(&stack_a);
@@ -53,6 +62,9 @@ void	sort_four(t_stack *stack_a, t_stack *stack_b)
 	pa(&stack_a, &stack_b);
 }
 
+/**
+ *  Sort 5: push 2 mins to B, sort 3, pull back
+ */
 void	sort_five(t_stack *stack_a, t_stack *stack_b)
 {
 	bring_min_top(&stack_a);

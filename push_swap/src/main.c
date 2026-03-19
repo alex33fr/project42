@@ -6,13 +6,16 @@
 /*   By: aprivalo <aprivalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/15 11:30:38 by aprivalo          #+#    #+#             */
-/*   Updated: 2026/02/27 11:01:52 by aprivalo         ###   ########.fr       */
+/*   Updated: 2026/03/19 15:52:09 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_check_digit(char *s)
+/**
+ *  Returns 1 if valid integer, 0 otherwise
+ */
+static int	ft_check_digit(char *s)
 {
 	int	i;
 	int	type_bool;
@@ -38,7 +41,10 @@ int	ft_check_digit(char *s)
 	return (type_bool);
 }
 
-int	ft_check_av(int ac, char **av)
+/**
+ *  Check all arguments are valid integers
+ */
+static int	ft_check_av(int ac, char **av)
 {
 	int	i;
 
@@ -52,7 +58,10 @@ int	ft_check_av(int ac, char **av)
 	return (1);
 }
 
-void	check_dup(t_stack *stack_a)
+/**
+ *  Check duplicate in stack_a
+ */
+static void	check_dup(t_stack *stack_a)
 {
 	t_node	*current;
 	t_node	*cmp;

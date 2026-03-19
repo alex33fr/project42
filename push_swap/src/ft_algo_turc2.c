@@ -12,6 +12,9 @@
 
 #include "push_swap.h"
 
+/**
+ *  Returns node with lowest index in stack_a
+ */
 static t_node	*get_min_index_node(t_stack *stack_a)
 {
 	t_node	*min;
@@ -28,6 +31,9 @@ static t_node	*get_min_index_node(t_stack *stack_a)
 	return (min);
 }
 
+/**
+ *  Assign sorted rank as index to each node
+ */
 void	set_index(t_stack *stack_a)
 {
 	t_node	*current;
@@ -50,6 +56,9 @@ void	set_index(t_stack *stack_a)
 	}
 }
 
+/**
+ *  Update pos field of each node
+ */
 void	position(t_stack *stack)
 {
 	t_node	*current;
@@ -65,6 +74,9 @@ void	position(t_stack *stack)
 	}
 }
 
+/**
+ *  Find target in A for each node in B
+ */
 void	target(t_stack *stack_a, t_stack *stack_b)
 {
 	t_node	*b;
@@ -89,6 +101,9 @@ void	target(t_stack *stack_a, t_stack *stack_b)
 	}
 }
 
+/**
+ *  Calculate cost_a and cost_b for each B node
+ */
 void	cost(t_stack *stack_a, t_stack *stack_b)
 {
 	t_node	*b;

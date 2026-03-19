@@ -6,7 +6,7 @@
 /*   By: aprivalo <aprivalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/15 11:46:18 by aprivalo          #+#    #+#             */
-/*   Updated: 2026/02/27 11:08:19 by aprivalo         ###   ########.fr       */
+/*   Updated: 2026/03/19 15:37:22 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,8 @@ int		is_sorted(t_stack *stack);
 int		ft_abs(int x);
 void	rot_a(t_stack **stack_a, int *ca);
 void	rot_b(t_stack **stack_b, int *cb);
-int		ft_check_digit(char *stack_s);
-int		ft_check_av(int ac, char **av);
 void	ft_split_stack(int ac, char **av, t_stack *stack_a);
-void	check_dup(t_stack *stack_a);
 void	error_exit(t_stack *stack_a);
-void	free_split(char **split);
 void	set_index(t_stack *stack_a);
 void	position(t_stack *stack);
 void	target(t_stack *stack_a, t_stack *stack_b);
@@ -65,5 +61,4 @@ void	bring_min_top(t_stack **stack_a);
 void	do_move(t_stack *stack_a, t_stack *stack_b);
 void	push_all(t_stack *stack_a, t_stack *stack_b);
 void	rotate(t_stack *stack_a);
-void	turk_sort(t_stack *stack_a, t_stack *stack_b);
 #endif

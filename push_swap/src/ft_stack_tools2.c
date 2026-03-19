@@ -6,13 +6,13 @@
 /*   By: aprivalo <aprivalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/24 15:19:19 by aprivalo          #+#    #+#             */
-/*   Updated: 2026/02/26 14:14:55 by aprivalo         ###   ########.fr       */
+/*   Updated: 2026/03/19 16:05:43 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	free_split(char **split)
+static void	free_split(char **split)
 {
 	int	i;
 
@@ -27,6 +27,9 @@ void	free_split(char **split)
 	free(split);
 }
 
+/**
+ *  Split one argv string by spaces
+ */
 static char	**split_av(char *av, t_stack *stack_a)
 {
 	char	**tab;
@@ -37,6 +40,9 @@ static char	**split_av(char *av, t_stack *stack_a)
 	return (tab);
 }
 
+/**
+ *  Convert tokens to int and push onto stack
+ */
 static void	atol_split(char **split, t_stack *stack_a)
 {
 	long	nbr;
@@ -56,6 +62,9 @@ static void	atol_split(char **split, t_stack *stack_a)
 	}
 }
 
+/**
+ *  Parse argv and fill stack_a
+ */
 void	ft_split_stack(int ac, char **av, t_stack *stack_a)
 {
 	char	**tab_splited;
