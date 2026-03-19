@@ -177,11 +177,11 @@ Tutorials :
             4. https://chgi.developpez.com/liste/
 
 Tester :
-            1. https://gitlab.com/nda-cunh/push_swap-testeur-max
-            2.
-                ```bash
-                ARG=$(shuf -i 0-100 -n 100 | tr '\n' ' '); ./push_swap $ARG | ./checker_linux $ARG
-                ```
+1. Student 42 tester - https://gitlab.com/nda-cunh/push_swap-testeur-max
+2. 
+```bash
+  ARG=$(shuf -i 1-100 -n 100 | tr '\n' ' ') && ./push_swap $ARG | wc -l && ./push_swap $ARG | ./checker_linux $ARG $ARG
+```
 
 YouTube videos were also used to better visualize key concepts,
 especially sorting algorithms and linked lists, which I initially struggled to understand.
