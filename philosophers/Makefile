@@ -1,39 +1,39 @@
-NAME        = philo
+NAME    = philo
 
-CC          = cc
-CFLAGS      = -Wall -Wextra -Werror -g
-LDFLAGS	= -pthread
-INCLUDES    = -Iincludes
+CC      = cc
+CFLAGS  = -Wall -Wextra -Werror -g
 
-SRC_DIR     = src
-SRCS        = main.c
+INCLUDES  = -Iincludes
 
-OBJ_DIR     = obj
-OBJS        = $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
-
-TOTAL_FILES := $(words $(SRCS))
-COUNT = 0
+OBJ_DIR   = obj
 
 GREEN = \033[0;32m
 BLUE  = \033[0;34m
 RED   = \033[0;31m
 RESET = \033[0m
 
+SRCS =	src/main.c \
+		src/parsing.c \
+		src/init.c \
+		src/philo.c \
+		src/forks.c \
+		src/monitor.c \
+		src/utils.c \
+		src/trash.c
+
+OBJS = $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
+
 all: $(NAME)
 
+$(OBJ_DIR)/%.o: %.c
+	@mkdir -p $(dir $@)
+	@printf "$(GREEN)[Compiling]$(RESET) $<\n"
+	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@ || (printf "$(RED)Error in $<$(RESET)\n"; exit 1)
+
 $(NAME): $(OBJS)
-	@printf "\r$(GREEN)[Linking]$(RESET)                     "
-	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LDFLAGS) || (printf "\n$(RED)Link error$(RESET)\n"; exit 1)
-	@printf "\r$(GREEN)[100%%] $(NAME) ready [OK]$(RESET)\n"
-
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
-	@$(eval COUNT=$(shell echo $$(($(COUNT)+1))))
-	@PERCENT=$$(($(COUNT)*100/$(TOTAL_FILES))); \
-	printf "\r$(GREEN)[%3d%%] %-30s$(RESET)" $$PERCENT "$<"; \
-	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@ || exit 1
-
-$(OBJ_DIR):
-	@mkdir -p $(OBJ_DIR)
+	@printf "$(GREEN)[Linking]$(RESET)\n"
+	@$(CC) $(CFLAGS) $(OBJS) -pthread -o $(NAME) || (printf "$(RED)Link error$(RESET)\n"; exit 1)
+	@printf "$(GREEN)[100%%] ========[ $(NAME) is ready to work ]======== [OK]$(RESET)\n"
 
 clean:
 	@rm -rf $(OBJ_DIR)
