@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cctype>
 #include <string>
 
 int main(int ac, char **av)

@@ -37,6 +37,9 @@ push_swap/push_swap
 pipex/libft
 pipex/pipex
 
+#cpp
+cpp/cpp.pdf
+
 # MLX
 minilibx-linux/libmlx.a
 
@@ -47,3 +50,4 @@ minilibx-linux/libmlx.a
 .DS_Store
 vgcore.*
 .vscode/
+

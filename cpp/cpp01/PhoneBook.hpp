@@ -6,7 +6,7 @@
 /*   By: aprivalo <aprivalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/17 15:32:13 by aprivalo          #+#    #+#             */
-/*   Updated: 2026/09/17 16:05:22 by aprivalo         ###   ########.fr       */
+/*   Updated: 2026/09/17 18:06:06 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,37 +15,43 @@
 
 #include <string>
 #include <iostream>
+
+class Contact
+{
+    private:
+        std::string FirstName;
+        std::string LastName;
+        std::string NickName;
+        std::string PhoneNumber;
+        std::string DarkestSecret;
+    public:
+    Contact();
+    ~Contact();
+    
+    void setFirstName(std::string const &FirstName);
+    std::string getFirstName() const;
+
+    void setLastName(std::string const &LastName);
+    std::string getLastName() const;
+
+    void setNickName(std::string const &NickName);
+    std::string getNickName() const;
+
+    void setPhoneNumber(std::string const &PhoneNumber);
+    std::string getPhoneNumber() const;
+
+    void setDarkestSecret(std::string const &DarkestSecret);
+    std::string getDarkestSecret() const;
+};
+
 class PhoneBook
 {
     private:
-    
+        Contact contacts[8];
+        int count;
     public:
     PhoneBook();
     ~PhoneBook();
 };
 
-PhoneBook::PhoneBook()
-{
-}
-
-PhoneBook::~PhoneBook()
-{
-}
-
-class Contact
-{
-    private:
-    
-    public:
-    Contact();
-    ~Contact();
-};
-
-Contact::Contact()
-{
-}
-
-Contact::~Contact()
-{
-}
-# endif
+# endif 

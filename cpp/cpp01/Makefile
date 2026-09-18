@@ -1,6 +1,5 @@
 CXX				:= c++
 CXXFLAGS		:= -Wall -Wextra -Werror -std=c++98
-MAKEFLAGS		+= --no-print-directory
 BUILD_DIR		:= .obj
 
 NAME			:= PhoneBook
