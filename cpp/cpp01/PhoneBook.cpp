@@ -6,7 +6,7 @@
 /*   By: aprivalo <aprivalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/17 15:30:18 by aprivalo          #+#    #+#             */
-/*   Updated: 2026/09/18 15:44:00 by aprivalo         ###   ########.fr       */
+/*   Updated: 2026/09/18 16:55:50 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,10 @@ std::string getField(std::string const &prompt)
 {
     std::string value;
     do {
-        std::
-    }
+        std::cout << prompt;
+        std::getline(std::cin, value);
+    }   while (value.empty());
+    return (value);
 }
 
 int main(int ac, char **av)
@@ -56,21 +58,21 @@ int main(int ac, char **av)
     (void)ac;
     (void)av;
     std::string cmd;
-    std::getline(std::cin, cmd);
     while(std::getline(std::cin, cmd))
     {
         if(cmd == "ADD")
         {
-            std::string FirstName;
-            do {
-                std::cout << "First name: ";
-                std::getline(std::cin, FirstName);
-            }   while(FirstName.empty());
-            if(!std::getline(std::cin, cmd))
-                break ;
+            std::string FirstName = getField("First name: ");
+            std::string LastName = getField("Last name: ");
+            std::string NickName = getField("Nick name: ");
+            std::string PhoneNumber = getField("Phone number: ");
+            std::string DarkestSecret = getField("Darkest Secret: ");
+            
+            
         }
         else if(cmd == "SEARCH")
         {
+            
             
         }
         else if(cmd == "EXIT")

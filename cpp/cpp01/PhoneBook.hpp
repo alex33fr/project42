@@ -6,7 +6,7 @@
 /*   By: aprivalo <aprivalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/17 15:32:13 by aprivalo          #+#    #+#             */
-/*   Updated: 2026/09/18 14:13:18 by aprivalo         ###   ########.fr       */
+/*   Updated: 2026/09/18 17:04:11 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ class PhoneBook
         Contact contacts[8];
         int count;
     public:
+        std::string AddContact(Contact const &contact);
     PhoneBook();
     ~PhoneBook();
 };
