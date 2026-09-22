@@ -6,44 +6,26 @@
 /*   By: aprivalo <aprivalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/17 15:30:18 by aprivalo          #+#    #+#             */
-/*   Updated: 2026/09/22 08:10:29 by aprivalo         ###   ########.fr       */
+/*   Updated: 2026/09/22 16:59:25 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 
-PhoneBook::PhoneBook() : count (0)
-{
-}
-
-PhoneBook::~PhoneBook()
-{
-}
-
-Contact::Contact() 
-{
-}
-
-Contact::~Contact()
-{
-}
+PhoneBook::PhoneBook(){count = 0;}
 
 void Contact::setFirstName(std::string const &Value){FirstName = Value;}
 std::string Contact::getFirstName() const {return FirstName; }
-
 void Contact::setLastName(std::string const &Value){LastName = Value;}
 std::string Contact::getLastName() const {return LastName;}
-
 void Contact::setNickName(std::string const &Value){NickName = Value;}
 std::string Contact::getNickName() const{return NickName;}
-
 void Contact::setPhoneNumber(std::string const &Value){PhoneNumber = Value;}
 std::string Contact::getPhoneNumber() const{return PhoneNumber;}
-
 void Contact::setDarkestSecret(std::string const &Value){DarkestSecret = Value;}
 std::string Contact::getDarkestSecret() const{return DarkestSecret;}
 
-std::string Truncate(std::string const &s)
+std::string truncate(std::string const &s)
 {
     if(s.length() > 10)
         return(s.substr(0, 9) + ".");
@@ -60,14 +42,19 @@ std::string getField(std::string const &UserInput)
     return (value);
 }
 
-void PhoneBook::AddContact(Contact const &contact)
+void PhoneBook::addContact(Contact const &contact)
 {
     contacts[count % 8] = contact;
     count++;
 }
 
-void PhoneBook::SearchContact() const
+void PhoneBook::searchContact() const
 {
+    if(count == 0)
+    {
+        std::cout << "Error: contact list can't be empty" << std::endl;
+        return ;
+    }
     std::cout << "|" << std::setw(10) << "Index"
               << "|" << std::setw(10) << "First Name"
               << "|" << std::setw(10) << "Last Name"
@@ -78,10 +65,10 @@ void PhoneBook::SearchContact() const
     {
         std::stringstream idx;
         idx << i;
-        std::cout << "|" << std::setw(10) << Truncate(idx.str())
-                  << "|" << std::setw(10) << Truncate(contacts[i].getFirstName())
-                  << "|" << std::setw(10) << Truncate(contacts[i].getLastName())
-                  << "|" << std::setw(10) << Truncate(contacts[i].getNickName())
+        std::cout << "|" << std::setw(10) << truncate(idx.str())
+                  << "|" << std::setw(10) << truncate(contacts[i].getFirstName())
+                  << "|" << std::setw(10) << truncate(contacts[i].getLastName())
+                  << "|" << std::setw(10) << truncate(contacts[i].getNickName())
                   << "|" << std::endl;
     }
     if (count == 0)
@@ -138,12 +125,12 @@ int main(int ac, char **av)
             contact.setNickName(NickName);
             contact.setPhoneNumber(PhoneNumber);
             contact.setDarkestSecret(DarkestSecret);
-            book.AddContact(contact);
+            book.addContact(contact);
             std::cout << "Account: " << FirstName << " created!" << std::endl;
         }
         else if(cmd == "SEARCH")
         {
-            book.SearchContact();
+            book.searchContact();
         }
         else if(cmd == "EXIT")
         {
