@@ -6,7 +6,7 @@
 /*   By: aprivalo <aprivalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/17 15:30:18 by aprivalo          #+#    #+#             */
-/*   Updated: 2026/09/22 16:59:25 by aprivalo         ###   ########.fr       */
+/*   Updated: 2026/09/22 18:19:32 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,10 +92,8 @@ void PhoneBook::searchContact() const
     std::cout << "Darkest secret: " << contacts[index].getDarkestSecret() << std::endl;
 }
 
-int main(int ac, char **av)
+int main(void)
 {
-    (void)ac;
-    (void)av;
     std::string cmd;
     PhoneBook book;
     Contact contact;
