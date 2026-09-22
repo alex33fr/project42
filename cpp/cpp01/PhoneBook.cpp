@@ -6,7 +6,7 @@
 /*   By: aprivalo <aprivalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/17 15:30:18 by aprivalo          #+#    #+#             */
-/*   Updated: 2026/09/21 15:55:12 by aprivalo         ###   ########.fr       */
+/*   Updated: 2026/09/22 08:10:29 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,12 @@ std::string Contact::getPhoneNumber() const{return PhoneNumber;}
 void Contact::setDarkestSecret(std::string const &Value){DarkestSecret = Value;}
 std::string Contact::getDarkestSecret() const{return DarkestSecret;}
 
+std::string Truncate(std::string const &s)
+{
+    if(s.length() > 10)
+        return(s.substr(0, 9) + ".");
+    return (s);
+}
 std::string getField(std::string const &UserInput)
 {
     std::string value;
@@ -62,14 +68,41 @@ void PhoneBook::AddContact(Contact const &contact)
 
 void PhoneBook::SearchContact() const
 {
-    int i = 0;
-    std::cout << "Index " << "First Name " << "Last Name" << "NickName" << std::endl;
-    while (i < count && i < 8)
+    std::cout << "|" << std::setw(10) << "Index"
+              << "|" << std::setw(10) << "First Name"
+              << "|" << std::setw(10) << "Last Name"
+              << "|" << std::setw(10) << "Nickname"
+              << "|" << std::endl;
+
+    for (int i = 0; i < count && i < 8; i++)
     {
-        std::cout << i << contacts[i].getFirstName() << contacts[i].getLastName() << contacts[i].getNickName() << std::endl;
-        i++;
+        std::stringstream idx;
+        idx << i;
+        std::cout << "|" << std::setw(10) << Truncate(idx.str())
+                  << "|" << std::setw(10) << Truncate(contacts[i].getFirstName())
+                  << "|" << std::setw(10) << Truncate(contacts[i].getLastName())
+                  << "|" << std::setw(10) << Truncate(contacts[i].getNickName())
+                  << "|" << std::endl;
     }
-    
+    if (count == 0)
+        return ;
+
+    std::cout << "Enter index to display: ";
+    std::string input;
+    if (!std::getline(std::cin, input))
+        return ;
+    std::istringstream iss(input);
+    int index;
+    if (!(iss >> index) || index < 0 || index >= count || index >= 8)
+    {
+        std::cout << "Invalid index." << std::endl;
+        return ;
+    }
+    std::cout << "First name:     " << contacts[index].getFirstName() << std::endl;
+    std::cout << "Last name:      " << contacts[index].getLastName() << std::endl;
+    std::cout << "Nickname:       " << contacts[index].getNickName() << std::endl;
+    std::cout << "Phone number:   " << contacts[index].getPhoneNumber() << std::endl;
+    std::cout << "Darkest secret: " << contacts[index].getDarkestSecret() << std::endl;
 }
 
 int main(int ac, char **av)
@@ -79,6 +112,7 @@ int main(int ac, char **av)
     std::string cmd;
     PhoneBook book;
     Contact contact;
+    std::cout << "PhoneBook, use commands: ADD, SEARCH, EXIT" << std::endl;
     while(std::getline(std::cin, cmd))
     {
         if(cmd == "ADD")
@@ -105,6 +139,7 @@ int main(int ac, char **av)
             contact.setPhoneNumber(PhoneNumber);
             contact.setDarkestSecret(DarkestSecret);
             book.AddContact(contact);
+            std::cout << "Account: " << FirstName << " created!" << std::endl;
         }
         else if(cmd == "SEARCH")
         {

@@ -6,7 +6,7 @@
 /*   By: aprivalo <aprivalo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/17 15:32:13 by aprivalo          #+#    #+#             */
-/*   Updated: 2026/09/21 15:56:51 by aprivalo         ###   ########.fr       */
+/*   Updated: 2026/09/22 07:45:20 by aprivalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <string>
 #include <iostream>
 #include <iomanip>
+#include <sstream>
 
 class Contact
 {
