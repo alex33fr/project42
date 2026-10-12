@@ -2,9 +2,12 @@ CXX				:= c++
 CXXFLAGS		:= -Wall -Wextra -Werror -std=c++98
 BUILD_DIR		:= .obj
 
-NAME			:= megaphone
+NAME			:= RepetitiveWork
 
-SRC				:= megaphone.cpp
+SRC				:= main.cpp \
+					ClapTrap.cpp \
+					ScavTrap.cpp \
+					FragTrap.cpp
 OBJ				:= $(addprefix $(BUILD_DIR)/, $(SRC:.cpp=.o))
 
 all: $(NAME)
@@ -12,7 +15,7 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	$(CXX) $(CXXFLAGS) $(OBJ) -o $(NAME)
 
-# Compil .cpp -> .o
+# Compile .cpp -> .o
 $(BUILD_DIR)/%.o: %.cpp
 	@mkdir -p $(dir $@)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
