@@ -1,13 +1,6 @@
 #include <iostream>
 #include <cctype>
 #include <string>
-/**
- * @brief
- * Toupper input message
- * @param ac 
- * @param av 
- * @return int = 1 for ignore name of program 
- */
 
 int main(int ac, char **av)
 {
@@ -28,7 +21,7 @@ int main(int ac, char **av)
                 std::cout << res;
             }
         }
-        std::cout << "\n";
+        std::cout << std::endl;
     }
     return (0);
 }

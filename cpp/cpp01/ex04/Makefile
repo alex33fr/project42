@@ -17,7 +17,6 @@ $(TEST_FILE):
 	@printf "the cat sleeps\na black cat and a white cat\n" > $(TEST_FILE)
 	@printf "catcat\nnothing here\n" >> $(TEST_FILE)
 
-# Compile .cpp -> .o
 $(BUILD_DIR)/%.o: %.cpp
 	@mkdir -p $(dir $@)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
