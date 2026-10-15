@@ -2,7 +2,7 @@ CXX				:= c++
 CXXFLAGS		:= -Wall -Wextra -Werror -std=c++98
 BUILD_DIR		:= .obj
 
-NAME			:= TowardsAMoreUsefulFixed-pointNumberClass
+NAME			:= TowardsAMoreUsefulFixed
 
 SRC				:= main.cpp \
 					Fixed.cpp
@@ -13,7 +13,6 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	$(CXX) $(CXXFLAGS) $(OBJ) -o $(NAME)
 
-# Compile .cpp -> .o
 $(BUILD_DIR)/%.o: %.cpp
 	@mkdir -p $(dir $@)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
