@@ -23,6 +23,31 @@ a.out
 # Build dirs
 build/
 obj/
+.obj/
+
+# Compiled program binaries (by Makefile NAME, any depth)
+**/AaaaandOPEN
+**/Account
+**/BraiiiiiiinnnzzzZ
+**/brain
+**/harl
+**/harlFilter
+**/libft.a
+**/libftprintf.a
+**/megaphone
+**/Moar_brainz
+**/MyFirstClassinOrthodoxCanonicalForm
+**/NowWereTalking
+**/philo
+**/PhoneBook
+**/pipex
+**/push_swap
+**/RepetitiveWork
+**/sedIsForLosers
+**/SerenaMyLove
+**/so_long
+**/TowardsAMoreUsefulFixed
+**/unnecessaryViolence
 
 # so_long specific
 so_long/so_long
@@ -39,6 +64,7 @@ pipex/pipex
 
 #cpp
 cpp/cpp.pdf
+
 
 # MLX
 minilibx-linux/libmlx.a
