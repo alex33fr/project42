@@ -15,7 +15,7 @@ class ClapTrap
         void beRepaired( unsigned int amount );
         ClapTrap &operator=(const ClapTrap &other);
 
-    private:
+    protected:
         std::string _name;
         unsigned int _hitPoints;
         unsigned int _energyPoints;
