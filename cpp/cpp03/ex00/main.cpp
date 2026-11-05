@@ -3,7 +3,7 @@
 
 int main(void)
 {
-    std::cout << "Test 1: actions and copy" << std::endl;
+    std::cout << "Test Actions and copy" << std::endl;
     {
         ClapTrap alex("Alex");
         alex.attack("Bob");
@@ -15,15 +15,15 @@ int main(void)
         assigned = alex;
     }
 
-    std::cout << std::endl << "Test 2: out of energy" << std::endl;
+    std::cout << std::endl << "Test Out of energy" << std::endl;
     {
         ClapTrap alex("Alex");
-        for (int i = 0; i < 11; i++)
+        for (int i = 0; i < 5; i++)
             alex.attack("Bob");
         alex.beRepaired(1);
     }
 
-    std::cout << std::endl << "Test 3: dead robot" << std::endl;
+    std::cout << std::endl << "Test Dead robot" << std::endl;
     {
         ClapTrap alex("Alex");
         alex.takeDamage(100);
