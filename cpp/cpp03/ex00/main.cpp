@@ -3,7 +3,9 @@
 
 int main(void)
 {
-    std::cout << "Test Actions and copy" << std::endl;
+    std::cout << "---------------------------------" << std::endl;
+    std::cout << std::endl << "1. Actions and copy" << std::endl;
+    std::cout << "---------------------------------" << std::endl;
     {
         ClapTrap alex("Alex");
         alex.attack("Bob");
@@ -15,19 +17,26 @@ int main(void)
         assigned = alex;
     }
 
-    std::cout << std::endl << "Test Out of energy" << std::endl;
+    std::cout << "---------------------------------" << std::endl;
+    std::cout << std::endl << "2. Out of energy" << std::endl;
+    std::cout << "---------------------------------" << std::endl;
     {
         ClapTrap alex("Alex");
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 11; i++)
             alex.attack("Bob");
+        std::cout << "***Try to repair***" << std::endl;
         alex.beRepaired(1);
     }
 
-    std::cout << std::endl << "Test Dead robot" << std::endl;
+    std::cout << "---------------------------------" << std::endl;
+    std::cout << std::endl << "3. Dead robot" << std::endl;
+    std::cout << "---------------------------------" << std::endl;
     {
         ClapTrap alex("Alex");
         alex.takeDamage(100);
+        std::cout << "***Try to attack***" << std::endl;
         alex.attack("Bob");
+        std::cout << "***Try to repair***" << std::endl;
         alex.beRepaired(5);
     }
     return (0);

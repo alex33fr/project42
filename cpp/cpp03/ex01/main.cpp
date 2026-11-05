@@ -4,7 +4,9 @@
 
 int main(void)
 {
-    std::cout << "Test 1: actions and copy" << std::endl;
+    std::cout << "---------------------------------" << std::endl;
+    std::cout << std::endl << "1. Actions and copy" << std::endl;
+    std::cout << "---------------------------------" << std::endl;
     {
         ClapTrap alex("Alex");
         alex.attack("Bob");
@@ -16,26 +18,37 @@ int main(void)
         assigned = alex;
     }
 
-    std::cout << std::endl << "Test 2: out of energy" << std::endl;
+    std::cout << "---------------------------------" << std::endl;
+    std::cout << std::endl << "2. Out of energy" << std::endl;
+    std::cout << "---------------------------------" << std::endl;
     {
         ClapTrap alex("Alex");
         for (int i = 0; i < 11; i++)
             alex.attack("Bob");
+        std::cout << "***Try to repair***" << std::endl;
         alex.beRepaired(1);
     }
 
-    std::cout << std::endl << "Test 3: dead robot" << std::endl;
+    std::cout << "---------------------------------" << std::endl;
+    std::cout << std::endl << "3. Dead robot" << std::endl;
+    std::cout << "---------------------------------" << std::endl;
     {
         ClapTrap alex("Alex");
         alex.takeDamage(100);
+        std::cout << "***Try to attack***" << std::endl;
         alex.attack("Bob");
+        std::cout << "***Try to repair***" << std::endl;
         alex.beRepaired(5);
     }
-    std::cout << std::endl << "Test 4: ScavTrap actions and copy" << std::endl;
+
+    std::cout << "---------------------------------" << std::endl;
+    std::cout << std::endl << "4. ScavTrap actions and copy" << std::endl;
+    std::cout << "---------------------------------" << std::endl;
     {
         ScavTrap serena("Serena");
         serena.attack("Bob");
         serena.takeDamage(30);
+        std::cout << "***Try to repair***" << std::endl;
         serena.beRepaired(10);
         serena.guardGate();
 
@@ -45,15 +58,22 @@ int main(void)
         assigned.attack("Bob");
     }
 
-    std::cout << std::endl << "Test 5: ScavTrap out of energy" << std::endl;
+    std::cout << "---------------------------------" << std::endl;
+    std::cout << std::endl << "5. ScavTrap out of energy" << std::endl;
+    std::cout << "---------------------------------" << std::endl;
     {
         ScavTrap serena("Serena");
-        for (int i = 0; i < 51; i++)
+        for (int i = 0; i < 55; i++)
+        {
             serena.attack("Bob");
+            std::cout << i << std::endl;
+        }
         serena.beRepaired(1);
     }
 
-    std::cout << std::endl << "Test 6: ScavTrap dead" << std::endl;
+    std::cout << "---------------------------------" << std::endl;
+    std::cout << std::endl << "6. ScavTrap dead" << std::endl;
+    std::cout << "---------------------------------" << std::endl;
     {
         ScavTrap serena("Serena");
         serena.takeDamage(100);
