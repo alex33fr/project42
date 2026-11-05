@@ -20,6 +20,7 @@ Cat& Cat::operator=(const Cat& other)
 	{
 		Animal::operator=(other);
 		// TODO: copy members from other
+
 		(void)other;
 	}
 	return *this;
@@ -32,5 +33,5 @@ Cat::~Cat()
 
 void Cat::makeSound() const
 {
-	// TODO
+	std::cout << "Meow, meow" << std::endl;
 }

@@ -30,7 +30,7 @@ WrongAnimal::~WrongAnimal()
 
 void WrongAnimal::makeSound() const
 {
-	// TODO
+	std::cout << "Wrong meow" << std::endl;
 }
 
 std::string WrongAnimal::getType() const

@@ -32,5 +32,5 @@ WrongCat::~WrongCat()
 
 void WrongCat::makeSound() const
 {
-	// TODO
+	std::cout << "Wrong Cat" << std::endl;
 }
