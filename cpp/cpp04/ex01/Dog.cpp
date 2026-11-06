@@ -3,15 +3,14 @@
 Dog::Dog() : Animal()
 {
 	std::cout << "Dog default constructor called" << std::endl;
-	// TODO: type = "Dog"; brain = new Brain();
+	type = "Dog";
+	// TODO: create the brain (new Brain)
 }
 
 Dog::Dog(const Dog& other) : Animal(other)
 {
 	std::cout << "Dog copy constructor called" << std::endl;
-	// TODO: deep copy brain (brain = new Brain(*other.brain))
-	// TODO: copy members from other
-	(void)other;
+	// TODO: deep copy: create a NEW Brain copied from *other.brain
 }
 
 Dog& Dog::operator=(const Dog& other)
@@ -20,8 +19,7 @@ Dog& Dog::operator=(const Dog& other)
 	if (this != &other)
 	{
 		Animal::operator=(other);
-		// TODO: copy members from other
-		(void)other;
+		// TODO: delete the old brain, then deep copy other's brain
 	}
 	return *this;
 }
@@ -29,10 +27,10 @@ Dog& Dog::operator=(const Dog& other)
 Dog::~Dog()
 {
 	std::cout << "Dog destructor called" << std::endl;
-	// TODO: delete brain;
+	// TODO: delete the brain
 }
 
 void Dog::makeSound() const
 {
-	// TODO
+	// TODO: print the dog sound
 }

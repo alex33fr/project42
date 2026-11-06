@@ -8,8 +8,8 @@ Brain::Brain()
 Brain::Brain(const Brain& other)
 {
 	std::cout << "Brain copy constructor called" << std::endl;
-	// TODO: copy members from other
-	(void)other;
+	// TODO: copy the 100 ideas from other (loop)
+	*this = other; // or loop here, your choice
 }
 
 Brain& Brain::operator=(const Brain& other)
@@ -17,8 +17,7 @@ Brain& Brain::operator=(const Brain& other)
 	std::cout << "Brain copy assignment operator called" << std::endl;
 	if (this != &other)
 	{
-		// TODO: copy members from other
-		(void)other;
+		// TODO: copy the 100 ideas from other (loop)
 	}
 	return *this;
 }
