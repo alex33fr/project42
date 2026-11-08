@@ -4,13 +4,13 @@ Cat::Cat() : Animal()
 {
 	std::cout << "Cat default constructor called" << std::endl;
 	type = "Cat";
-	// TODO: create the brain (new Brain)
+	brain = new Brain();
 }
 
 Cat::Cat(const Cat& other) : Animal(other)
 {
 	std::cout << "Cat copy constructor called" << std::endl;
-	// TODO: deep copy: create a NEW Brain copied from *other.brain
+	brain = new Brain(*other.brain);
 }
 
 Cat& Cat::operator=(const Cat& other)
@@ -18,19 +18,20 @@ Cat& Cat::operator=(const Cat& other)
 	std::cout << "Cat copy assignment operator called" << std::endl;
 	if (this != &other)
 	{
-		Animal::operator=(other);
-		// TODO: delete the old brain, then deep copy other's brain
+		this->type = other.type;
+		delete brain;
+		brain = new Brain(*other.brain);
 	}
-	return *this;
+	return (*this);
 }
 
 Cat::~Cat()
 {
 	std::cout << "Cat destructor called" << std::endl;
-	// TODO: delete the brain
+	delete brain;
 }
 
 void Cat::makeSound() const
 {
-	// TODO: print the cat sound
+	std::cout << "Miaou Miaou" << std::endl;
 }
