@@ -1,46 +1,119 @@
 #include "Character.hpp"
 
-Character::Character()
+Character::Character() : name("Default Character")
 {
-	// TODO: empty inventory
+	std::cout << "Character default constructor called" << std::endl;
+	for (int i = 0; i < 4; i++)
+		inventory[i] = NULL;
 }
 
-Character::Character(std::string const & name)
+Character::Character(std::string const & name) : name(name)
 {
-	// TODO
+	std::cout << "Character parameterized constructor called" << std::endl;
+	for (int i = 0; i < 4; i++)
+		inventory[i] = NULL;
 }
 
-Character::Character(const Character& other)
+Character::Character(const Character& other) : name(other.name)
 {
-	// TODO: deep copy
+	std::cout << "Character copy constructor called" << std::endl;
+	for (int i = 0; i < 4; i++)
+	{
+		if (other.inventory[i] != NULL)
+			this->inventory[i] = other.inventory[i]->clone();
+		else
+			this->inventory[i] = NULL;
+	}
 }
 
 Character& Character::operator=(const Character& other)
 {
-	// TODO: delete the old materias FIRST, then deep copy
+	std::cout << "Character assignment operator called" << std::endl;
+	if (this != &other)
+	{
+		this->name = other.name;
+		for (int i = 0; i < 4; i++)
+		{
+			if (this->inventory[i] != NULL)
+				delete this->inventory[i];
+			this->inventory[i] = NULL;
+		}
+		for (int i = 0; i < 4; i++)
+		{
+			if (other.inventory[i] != NULL)
+			{
+				this->inventory[i] = other.inventory[i]->clone();
+			}
+			else
+				this->inventory[i] = NULL;
+		}
+	}
+	return (*this);
 }
 
 Character::~Character()
 {
-	// TODO
+	std::cout << "Character destructor called" << std::endl;
+	for (int i = 0; i < 4; i++)
+	{
+		if (inventory[i] != NULL)
+			delete inventory[i];
+	}
 }
 
 std::string const & Character::getName() const
 {
-	// TODO
+	return (name);
 }
 
 void Character::equip(AMateria* m)
 {
-	// TODO: first empty slot (0 -> 3), full -> nothing
+	if(m == NULL)
+	{
+		std::cout << "Cannot equip NULL materia" << std::endl;
+		return ;
+	}
+	for (int i = 0; i < 4; i++)
+	{
+		if (inventory[i] == NULL)
+		{
+			inventory[i] = m;
+			std::cout << "Equipped materia of type " << m->getType() << " at index " << i << std::endl;
+			return ;
+		}
+	}
+	std::cout << "Inventory full, cannot equip materia of type " << m->getType() << std::endl;
 }
 
 void Character::unequip(int idx)
 {
-	// TODO: no delete! who frees it then?
+	std::cout << "Character unequip called" << std::endl;
+	if (idx < 0 || idx >= 4)
+	{
+		std::cout << "Invalid index" << std::endl;
+		return ;
+	}
+	if (inventory[idx] == NULL)
+	{
+		std::cout << "No materia to unequip at index " << idx << std::endl;
+		return ;
+	}
+	inventory[idx] = NULL;
 }
 
 void Character::use(int idx, ICharacter& target)
 {
-	// TODO
+	std::cout << "Character use called" << std::endl;
+	if (idx < 0 || idx >= 4)
+	{
+		std::cout << "Invalid index" << std::endl;
+		return ;
+	}
+	if (inventory[idx] == NULL)
+	{
+		std::cout << "No materia to use at index " << idx << std::endl;
+		return ;
+	}
+	inventory[idx]->use(target);
 }
+

@@ -9,7 +9,7 @@ class ICharacter;
 class AMateria
 {
 	protected:
-		// TODO: the attribute(s)
+		std::string type;
 
 	public:
 		AMateria();

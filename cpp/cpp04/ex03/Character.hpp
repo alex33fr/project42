@@ -6,7 +6,8 @@
 class Character : public ICharacter
 {
 	private:
-		// TODO: name + inventory of 4 materias
+		std::string name;
+		AMateria* inventory[4];
 
 	public:
 		Character();

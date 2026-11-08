@@ -6,7 +6,7 @@
 class MateriaSource : public IMateriaSource
 {
 	private:
-		// TODO: memory for 4 learned materias
+		AMateria* inventory[4];
 
 	public:
 		MateriaSource();
