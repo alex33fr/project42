@@ -8,8 +8,7 @@ Brain::Brain()
 Brain::Brain(const Brain& other)
 {
 	std::cout << "Brain copy constructor called" << std::endl;
-	// TODO: copy the 100 ideas from other (loop)
-	*this = other; // or loop here, your choice
+	*this = other;
 }
 
 Brain& Brain::operator=(const Brain& other)
@@ -17,12 +16,33 @@ Brain& Brain::operator=(const Brain& other)
 	std::cout << "Brain copy assignment operator called" << std::endl;
 	if (this != &other)
 	{
-		// TODO: copy the 100 ideas from other (loop)
+		for (int i = 0; i < 100; i++)
+			this->ideas[i] = other.ideas[i];
 	}
-	return *this;
+	return (*this);
 }
 
 Brain::~Brain()
 {
 	std::cout << "Brain destructor called" << std::endl;
+}
+
+void Brain::setIdea(int i, std::string const & idea)
+{
+	if(i < 0 || i >= 100)
+	{
+		std::cout << "Index out of range" << std::endl;
+		return;
+	}
+	ideas[i] = idea;
+}
+
+std::string Brain::getIdea(int i) const
+{
+	if(i < 0 || i >= 100)
+	{
+		std::cout << "Index out of range" << std::endl;
+		return "";
+	}
+	return (ideas[i]);
 }
